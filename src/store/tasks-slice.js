@@ -6,7 +6,7 @@ const tasksInitialState = {
       id: "0",
       title: "To do a ToDo",
       description: "must finish the app",
-      date: Date.now(),
+      date: "2012-12-12",
       group: "Default",
       isFinished: false,
     },
@@ -43,6 +43,18 @@ const tasksSlice = createSlice({
       const newTasks = currentTasks.filter((task) => task.id !== id);
 
       state.list = newTasks;
+    },
+    updateTask: (state, action) => {
+      const currentTasks = state.list;
+      const selectedIndex = currentTasks.findIndex(
+        (task) => task.id === action.payload.id
+      );
+      if (selectedIndex < 0) {
+        console.log(`Task with id=${action.payload.id} doesn't exist in store`);
+        return;
+      }
+
+      state.list[selectedIndex] = action.payload;
     },
     toggleFinished: (state, action) => {
       const id = action.payload;
