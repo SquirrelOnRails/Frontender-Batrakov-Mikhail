@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const tasksInitialState = {
+  filter: {
+    title: "",
+    group: "",
+    date: "",
+    isFinished: false,
+  },
   list: [
     {
       id: "0",
@@ -77,6 +83,13 @@ const tasksSlice = createSlice({
       });
 
       state.list = newTasks;
+    },
+    setFilter: (state, action) => {
+      const { field, value } = action.payload;
+      state.filter[field] = value;
+    },
+    clearFilter: (state) => {
+      state.filter = tasksInitialState.filter;
     },
   },
 });

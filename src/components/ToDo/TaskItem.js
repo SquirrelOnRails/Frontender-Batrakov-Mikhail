@@ -4,8 +4,6 @@ import styles from "./TaskItem.module.css";
 const TaskItem = (props) => {
   const { title, description, group, date, isFinished } = props.task;
   const isExpired = !isFinished && date && new Date(date) < new Date();
-  console.log(date);
-  console.log(isExpired);
 
   return (
     <Card
@@ -22,12 +20,9 @@ const TaskItem = (props) => {
       <div>
         <button onClick={props.onEdit}>Edit</button>
         <button onClick={props.onRemove}>Remove</button>
-        {!isFinished && (
-          <button onClick={props.onFinished}>Set Finished</button>
-        )}
-        {isFinished && (
-          <button onClick={props.onFinished}>Set Uninished</button>
-        )}
+        <button onClick={props.onFinished}>
+          Set {isFinished ? "Unfinished" : "Finished"}
+        </button>
       </div>
     </Card>
   );

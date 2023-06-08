@@ -8,6 +8,7 @@ import Filter from "../components/ToDo/Filter";
 const ToDo = () => {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasks.list);
+  const filter = useSelector((state) => state.tasks.filter);
 
   const newTaskSubmitHandler = (newTask) => {
     // TODO: send to server first
@@ -19,7 +20,7 @@ const ToDo = () => {
     <section>
       <NewTaskForm onSubmit={newTaskSubmitHandler} />
       <Filter />
-      <TasksList tasks={tasks} />
+      <TasksList tasks={tasks} filter={filter} />
     </section>
   );
 };

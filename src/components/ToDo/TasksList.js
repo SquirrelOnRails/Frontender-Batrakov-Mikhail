@@ -10,7 +10,7 @@ const TasksList = (props) => {
   const resolver = useNavigate();
   const dispatch = useDispatch();
 
-  const tasks = props.tasks;
+  const { tasks, filter } = props;
 
   const editTaskHandler = (taskId) => {
     resolver(`${location.pathname}/${taskId}`);
@@ -22,7 +22,33 @@ const TasksList = (props) => {
     dispatch(tasksActions.toggleFinished(taskId));
   };
 
-  const tasksArr = tasks.map((task) => {
+  const filterTasks = (tasks) => {
+    let result = tasks;
+    if (filter.title) {
+      result = result.filter(
+        (task) =>
+          task.title.toUpperCase().includes(filter.title.toUpperCase()) ||
+          (task.description &&
+            task.description.toUpperCase().includes(filter.title.toUpperCase()))
+      );
+    }
+    if (filter.group) {
+      result = result.filter(
+        (task) =>
+          task.group &&
+          task.group.toUpperCase().includes(filter.group.toUpperCase())
+      );
+    }
+    if (filter.date) {
+      result = result.filter((task) => task.date && task.date === filter.date);
+    }
+    if (!filter.isFinished) {
+      result = result.filter((task) => task.isFinished === false);
+    }
+    return result;
+  };
+
+  const tasksArr = filterTasks(tasks).map((task) => {
     return (
       <TaskItem
         key={task.id}
