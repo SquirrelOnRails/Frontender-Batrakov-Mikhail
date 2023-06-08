@@ -8,6 +8,10 @@ const Filter = () => {
   const filter = useSelector((state) => state.tasks.filter);
   const [isFinished, setIsFinished] = useState(filter.isFinished);
 
+  const [isTitleSortAsc, setIsTitleSortAsc] = useState(false);
+  const [isGroupSortAsc, setIsGroupSortAsc] = useState(false);
+  const [isDateSortAsc, setIsDateSortAsc] = useState(false);
+
   const onTitleDescrFilterChange = (event) => {
     dispatch(
       tasksActions.setFilter({
@@ -45,6 +49,37 @@ const Filter = () => {
     dispatch(tasksActions.clearFilter());
   };
 
+  const sortTitleHandler = () => {
+    const direction = isTitleSortAsc ? "desc" : "asc";
+    setIsTitleSortAsc(!isTitleSortAsc);
+    dispatch(
+      tasksActions.sort({
+        sortBy: "title",
+        direction: direction,
+      })
+    );
+  };
+  const sortGroupHandler = () => {
+    const direction = isGroupSortAsc ? "desc" : "asc";
+    setIsGroupSortAsc(!isGroupSortAsc);
+    dispatch(
+      tasksActions.sort({
+        sortBy: "group",
+        direction: direction,
+      })
+    );
+  };
+  const sortDateHandler = () => {
+    const direction = isDateSortAsc ? "desc" : "asc";
+    setIsDateSortAsc(!isDateSortAsc);
+    dispatch(
+      tasksActions.sort({
+        sortBy: "date",
+        direction: direction,
+      })
+    );
+  };
+
   return (
     <Card>
       <form>
@@ -56,7 +91,9 @@ const Filter = () => {
             value={filter.title}
             onChange={onTitleDescrFilterChange}
           />
-          <button type="button">Sort</button>
+          <button onClick={sortTitleHandler} type="button">
+            Sort {isTitleSortAsc ? "descending" : "ascending"}
+          </button>
         </div>
         <div>
           <label htmlFor="group">Group</label>
@@ -66,7 +103,9 @@ const Filter = () => {
             value={filter.group}
             onChange={onGroupFilterChange}
           />
-          <button type="button">Sort</button>
+          <button onClick={sortGroupHandler} type="button">
+            Sort {isGroupSortAsc ? "descending" : "ascending"}
+          </button>
         </div>
         <div>
           <label htmlFor="date">Date</label>
@@ -76,7 +115,9 @@ const Filter = () => {
             value={filter.date}
             onChange={onDateFilterChange}
           />
-          <button type="button">Sort</button>
+          <button onClick={sortDateHandler} type="button">
+            Sort {isDateSortAsc ? "descending" : "ascending"}
+          </button>
         </div>
         <div>
           <button type="button" onClick={onFinishedFilterChange}>
