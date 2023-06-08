@@ -43,15 +43,19 @@ const NewTaskForm = (props) => {
 
   const titleChangeHandler = (event) => {
     setTitle(event.target.value);
+    setIsTitleToutched(true);
   };
   const descriptionChangeHandler = (event) => {
     setDescription(event.target.value);
+    setIsDescriptionToutched(true);
   };
   const dateChangeHandler = (event) => {
     setDate(event.target.value);
+    setIsDateToutched(true);
   };
   const groupChangeHandler = (event) => {
     setGroup(event.target.value);
+    setIsGroupToutched(true);
   };
 
   const titleBlurHandler = () => {
@@ -78,6 +82,7 @@ const NewTaskForm = (props) => {
       date,
     };
     props.onSubmit(newTask);
+    resetFormHandler();
   };
   const resetFormHandler = () => {
     setTitle("");
@@ -103,7 +108,9 @@ const NewTaskForm = (props) => {
             onChange={titleChangeHandler}
             onBlur={titleBlurHandler}
           />
-          {!isTitleValid && isTitleToutched && <p>Title should not be empty</p>}
+          {!isTitleValid && isTitleToutched && (
+            <p className="error-message">Title should not be empty</p>
+          )}
         </div>
         <div>
           <label htmlFor="description">Description</label>
@@ -115,7 +122,9 @@ const NewTaskForm = (props) => {
             onBlur={descriptionBlurHandler}
           />
           {!isDescriptionValid && isDescriptionToutched && (
-            <p>Please enter valid value for the Description</p>
+            <p className="error-message">
+              Please enter valid value for the Description
+            </p>
           )}
         </div>
         <div>
@@ -127,7 +136,9 @@ const NewTaskForm = (props) => {
             onChange={groupChangeHandler}
             onBlur={groupBlurHandler}
           />
-          {!isGroupValid && isGroupToutched && <p>Group should not be empty</p>}
+          {!isGroupValid && isGroupToutched && (
+            <p className="error-message">Group should not be empty</p>
+          )}
         </div>
         <div>
           <label htmlFor="date">Till date</label>
@@ -139,7 +150,9 @@ const NewTaskForm = (props) => {
             onBlur={dateBlurHandler}
           />
           {!isDateValid && isDateToutched && (
-            <p>Date should not be prior current date</p>
+            <p className="error-message">
+              Date should not be prior current date
+            </p>
           )}
         </div>
         <div>

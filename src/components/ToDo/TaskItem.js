@@ -13,9 +13,24 @@ const TaskItem = (props) => {
     >
       <div>
         <p>{title}</p>
-        {description && <p>{description}</p>}
-        {date && <p>{date}</p>}
-        {group && <p>{group}</p>}
+        {description && (
+          <div>
+            <label>description: </label>
+            <span>{description}</span>
+          </div>
+        )}
+        {date && (
+          <div>
+            <label>date: </label>
+            <span>{date}</span>
+          </div>
+        )}
+        {group && (
+          <div>
+            <label>group: </label>
+            <span>{group}</span>
+          </div>
+        )}
       </div>
       <div>
         <button onClick={props.onEdit}>Edit</button>
