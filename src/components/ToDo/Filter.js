@@ -4,6 +4,7 @@ const Filter = () => {
   const onTitleDescrFilterChange = (event) => {};
   const onGroupFilterChange = (event) => {};
   const onDateFilterChange = (event) => {};
+  const onFinishedFilterChange = (event) => {};
 
   return (
     <Card>
@@ -26,6 +27,14 @@ const Filter = () => {
           <label htmlFor="date">Date</label>
           <input id="date" type="date" onChange={onDateFilterChange} />
           <button type="button">Sort</button>
+        </div>
+        <div>
+          <label htmlFor="finished">Include finished</label>
+          <input
+            id="finished"
+            type="checkbox"
+            onChange={onFinishedFilterChange}
+          />
         </div>
       </form>
     </Card>

@@ -1,7 +1,7 @@
 import Card from "../UI/Card";
 import useInput from "../../hooks/use-input";
 
-const NewTaskForm = () => {
+const NewTaskForm = (props) => {
   const {
     value: title,
     setValue: setTitle,
@@ -30,6 +30,7 @@ const NewTaskForm = () => {
     setIsToutched: setIsDateToutched,
     isValid: isDateValid,
   } = useInput((val) => {
+    if (val === "") return true;
     const selectedDate = new Date(Date.parse(val));
     if (!selectedDate) return false;
     const today = new Date().setHours(0, 0, 0, 0);
@@ -40,27 +41,54 @@ const NewTaskForm = () => {
   const isFormValid =
     isTitleValid && isDescriptionValid && isGroupValid && isDateValid;
 
-  const titleChangeHandler = (event) => {};
-  const descriptionChangeHandler = (event) => {};
-  const dateChangeHandler = (event) => {};
-  const groupChangeHandler = (event) => {};
+  const titleChangeHandler = (event) => {
+    setTitle(event.target.value);
+  };
+  const descriptionChangeHandler = (event) => {
+    setDescription(event.target.value);
+  };
+  const dateChangeHandler = (event) => {
+    setDate(event.target.value);
+  };
+  const groupChangeHandler = (event) => {
+    setGroup(event.target.value);
+  };
 
-  const titleBlurHandler = (event) => {};
-  const descriptionBlurHandler = (event) => {};
-  const dateBlurHandler = (event) => {};
-  const groupBlurHandler = (event) => {};
+  const titleBlurHandler = () => {
+    setIsTitleToutched(true);
+  };
+  const descriptionBlurHandler = () => {
+    setIsDescriptionToutched(true);
+  };
+  const dateBlurHandler = () => {
+    setIsDateToutched(true);
+  };
+  const groupBlurHandler = () => {
+    setIsGroupToutched(true);
+  };
 
   const submitFormHandler = (event) => {
     event.preventDefault();
     if (!isFormValid) return;
 
-    console.log({ title, description, group, date });
+    const newTask = {
+      title,
+      description,
+      group,
+      date,
+    };
+    props.onSubmit(newTask);
   };
-  const resetFormHandler = (event) => {
+  const resetFormHandler = () => {
     setTitle("");
     setDescription("");
     setGroup("");
     setDate("");
+
+    setIsTitleToutched(false);
+    setIsDescriptionToutched(false);
+    setIsGroupToutched(false);
+    setIsDateToutched(false);
   };
 
   return (

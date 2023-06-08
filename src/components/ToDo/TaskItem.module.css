@@ -1,0 +1,7 @@
+.task {
+  background-color: beige;
+}
+
+.task.finished {
+  background-color: aqua;
+}
