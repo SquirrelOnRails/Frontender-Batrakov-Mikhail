@@ -5,3 +5,7 @@
 .task.finished {
   background-color: aqua;
 }
+
+.task.expired {
+  background-color: rgb(203, 138, 125);
+}

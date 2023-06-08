@@ -3,8 +3,16 @@ import styles from "./TaskItem.module.css";
 
 const TaskItem = (props) => {
   const { title, description, group, date, isFinished } = props.task;
+  const isExpired = !isFinished && date && new Date(date) < new Date();
+  console.log(date);
+  console.log(isExpired);
+
   return (
-    <Card className={`${styles.task} ${isFinished && styles.finished}`}>
+    <Card
+      className={`${styles.task} ${isFinished && styles.finished} ${
+        isExpired && styles.expired
+      }`}
+    >
       <div>
         <p>{title}</p>
         {description && <p>{description}</p>}
