@@ -10,7 +10,7 @@ const TasksList = (props) => {
   const resolver = useNavigate();
   const dispatch = useDispatch();
 
-  const { tasks, filter } = props;
+  const { tasks, filter, order } = props;
 
   const editTaskHandler = (taskId) => {
     resolver(`${location.pathname}/${taskId}`);
@@ -48,7 +48,31 @@ const TasksList = (props) => {
     return result;
   };
 
-  const tasksArr = filterTasks(tasks).map((task) => {
+  const orderTasks = (tasks) => {
+    let result = tasks;
+    if (order.title) {
+      const directionKey = order.title === "asc" ? 1 : -1;
+      result = result.sort((a, b) => {
+        return a.title > b.title ? directionKey : -directionKey;
+      });
+    }
+    if (order.group) {
+      const directionKey = order.group === "asc" ? 1 : -1;
+      result = result.sort((a, b) => {
+        return a.group > b.group ? directionKey : -directionKey;
+      });
+    }
+    if (order.date) {
+      const directionKey = order.date === "asc" ? 1 : -1;
+      result = result.sort((a, b) => {
+        return a.date > b.date ? directionKey : -directionKey;
+      });
+    }
+    return result;
+  };
+
+  const filteredOrderedTasks = orderTasks(filterTasks(tasks));
+  const tasksArr = filteredOrderedTasks.map((task) => {
     return (
       <TaskItem
         key={task.id}

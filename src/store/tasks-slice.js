@@ -7,6 +7,11 @@ const tasksInitialState = {
     date: "",
     isFinished: false,
   },
+  order: {
+    title: "",
+    group: "",
+    date: "",
+  },
   list: [
     {
       id: "0",
@@ -73,16 +78,15 @@ const tasksSlice = createSlice({
       state.list[selectedIndex].isFinished =
         !state.list[selectedIndex].isFinished;
     },
-    sort: (state, action) => {
-      let currentTasks = state.list;
-      const { sortBy, direction } = action.payload;
-      const directionKey = direction === "asc" ? 1 : -1;
-
-      const newTasks = currentTasks.sort((a, b) => {
-        return a[sortBy] > b[sortBy] ? directionKey : -directionKey;
-      });
-
-      state.list = newTasks;
+    setOrder: (state, action) => {
+      const { field, direction } = action.payload;
+      if (!field || !direction) {
+        return;
+      }
+      state.order[field] = direction;
+    },
+    clearOrder: (state) => {
+      state.order = tasksInitialState.order;
     },
     setFilter: (state, action) => {
       const { field, value } = action.payload;

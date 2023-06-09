@@ -7,10 +7,15 @@ const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.tasks.filter);
   const [isFinished, setIsFinished] = useState(filter.isFinished);
-
-  const [isTitleSortAsc, setIsTitleSortAsc] = useState(false);
-  const [isGroupSortAsc, setIsGroupSortAsc] = useState(false);
-  const [isDateSortAsc, setIsDateSortAsc] = useState(false);
+  const {
+    title: titleOrder,
+    group: groupOrder,
+    date: dateOrder,
+  } = useSelector((state) => state.tasks.order);
+  const taskGroups = useSelector((state) => {
+    const groups = state.tasks.list.map((task) => task.group);
+    return [...new Set(groups)];
+  });
 
   const onTitleDescrFilterChange = (event) => {
     dispatch(
@@ -24,7 +29,7 @@ const Filter = () => {
     dispatch(
       tasksActions.setFilter({
         field: "group",
-        value: event.target.value,
+        value: event.target.value === "unset" ? "" : event.target.value,
       })
     );
   };
@@ -36,7 +41,7 @@ const Filter = () => {
       })
     );
   };
-  const onFinishedFilterChange = (event) => {
+  const onFinishedFilterChange = () => {
     setIsFinished(!isFinished);
     dispatch(
       tasksActions.setFilter({
@@ -47,35 +52,33 @@ const Filter = () => {
   };
   const clearFilterHandler = () => {
     dispatch(tasksActions.clearFilter());
+    dispatch(tasksActions.clearOrder());
   };
 
-  const sortTitleHandler = () => {
-    const direction = isTitleSortAsc ? "desc" : "asc";
-    setIsTitleSortAsc(!isTitleSortAsc);
+  const orderTitleHandler = () => {
+    const newDirection = titleOrder === "asc" ? "desc" : "asc";
     dispatch(
-      tasksActions.sort({
-        sortBy: "title",
-        direction: direction,
+      tasksActions.setOrder({
+        field: "title",
+        direction: newDirection,
       })
     );
   };
-  const sortGroupHandler = () => {
-    const direction = isGroupSortAsc ? "desc" : "asc";
-    setIsGroupSortAsc(!isGroupSortAsc);
+  const orderGroupHandler = () => {
+    const newDirection = groupOrder === "asc" ? "desc" : "asc";
     dispatch(
-      tasksActions.sort({
-        sortBy: "group",
-        direction: direction,
+      tasksActions.setOrder({
+        field: "group",
+        direction: newDirection,
       })
     );
   };
-  const sortDateHandler = () => {
-    const direction = isDateSortAsc ? "desc" : "asc";
-    setIsDateSortAsc(!isDateSortAsc);
+  const orderDateHandler = () => {
+    const newDirection = dateOrder === "asc" ? "desc" : "asc";
     dispatch(
-      tasksActions.sort({
-        sortBy: "date",
-        direction: direction,
+      tasksActions.setOrder({
+        field: "date",
+        direction: newDirection,
       })
     );
   };
@@ -91,20 +94,24 @@ const Filter = () => {
             value={filter.title}
             onChange={onTitleDescrFilterChange}
           />
-          <button onClick={sortTitleHandler} type="button">
-            Sort {isTitleSortAsc ? "descending" : "ascending"}
+          <button onClick={orderTitleHandler} type="button">
+            Order {titleOrder && `(current: ${titleOrder})`}
           </button>
         </div>
         <div>
           <label htmlFor="group">Group</label>
-          <input
-            id="group"
-            type="text"
-            value={filter.group}
-            onChange={onGroupFilterChange}
-          />
-          <button onClick={sortGroupHandler} type="button">
-            Sort {isGroupSortAsc ? "descending" : "ascending"}
+          <select onChange={onGroupFilterChange}>
+            <option key="unset" value="unset">
+              (any)
+            </option>
+            {taskGroups.map((group) => (
+              <option key={group} value={group}>
+                {group}
+              </option>
+            ))}
+          </select>
+          <button onClick={orderGroupHandler} type="button">
+            Order {groupOrder && `(current: ${groupOrder})`}
           </button>
         </div>
         <div>
@@ -115,8 +122,8 @@ const Filter = () => {
             value={filter.date}
             onChange={onDateFilterChange}
           />
-          <button onClick={sortDateHandler} type="button">
-            Sort {isDateSortAsc ? "descending" : "ascending"}
+          <button onClick={orderDateHandler} type="button">
+            Order {dateOrder && `(current: ${dateOrder})`}
           </button>
         </div>
         <div>

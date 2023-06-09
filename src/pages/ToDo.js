@@ -9,6 +9,7 @@ const ToDo = () => {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasks.list);
   const filter = useSelector((state) => state.tasks.filter);
+  const order = useSelector((state) => state.tasks.order);
 
   const newTaskSubmitHandler = (newTask) => {
     // TODO: send to server first
@@ -20,7 +21,7 @@ const ToDo = () => {
     <section>
       <NewTaskForm onSubmit={newTaskSubmitHandler} />
       <Filter />
-      <TasksList tasks={tasks} filter={filter} />
+      <TasksList tasks={tasks} filter={filter} order={order} />
     </section>
   );
 };

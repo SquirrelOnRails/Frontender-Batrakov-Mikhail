@@ -73,7 +73,13 @@ const NewTaskForm = (props) => {
 
   const submitFormHandler = (event) => {
     event.preventDefault();
-    if (!isFormValid) return;
+    if (!isFormValid) {
+      setIsTitleToutched(true);
+      setIsDescriptionToutched(true);
+      setIsGroupToutched(true);
+      setIsDateToutched(true);
+      return;
+    }
 
     const newTask = {
       title,
