@@ -1,5 +1,29 @@
+import { useSelector, useDispatch } from "react-redux";
+import { tasksActions } from "../store/tasks-slice";
+
+import NewTaskForm from "../components/ToDo/NewTaskForm";
+import TasksList from "../components/ToDo/TasksList";
+import Filter from "../components/ToDo/Filter";
+
 const ToDo = () => {
-  return <h1>ToDo.js</h1>;
+  const dispatch = useDispatch();
+  const tasks = useSelector((state) => state.tasks.list);
+  const filter = useSelector((state) => state.tasks.filter);
+  const order = useSelector((state) => state.tasks.order);
+
+  const newTaskSubmitHandler = (newTask) => {
+    // TODO: send to server first
+    newTask.id = Math.random().toString();
+    dispatch(tasksActions.addTask(newTask));
+  };
+
+  return (
+    <section>
+      <NewTaskForm onSubmit={newTaskSubmitHandler} />
+      <Filter />
+      <TasksList tasks={tasks} filter={filter} order={order} />
+    </section>
+  );
 };
 
 export default ToDo;
