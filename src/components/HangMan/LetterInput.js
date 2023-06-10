@@ -1,10 +1,6 @@
-import { useState } from "react";
-
 import useInput from "../../hooks/use-input";
 
 const LetterInput = (props) => {
-  // onSubmit
-
   const {
     value: letter,
     setValue: setLetter,
@@ -18,6 +14,7 @@ const LetterInput = (props) => {
 
   const letterSubmitHandler = (event) => {
     event.preventDefault();
+    setLetter("");
     if (!isValid) return;
 
     props.onSubmit(letter);

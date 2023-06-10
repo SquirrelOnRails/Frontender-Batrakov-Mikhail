@@ -5,7 +5,7 @@ import WordDisplay from "./WordDisplay";
 import LetterInput from "./LetterInput";
 import { hangmanActions } from "../../store/hangman-slice";
 
-const Game = () => {
+const Game = (props) => {
   const dispatch = useDispatch();
   const currentGame = useSelector((state) => state.hangman.currentGame);
 
@@ -15,6 +15,7 @@ const Game = () => {
 
   return (
     <Fragment>
+      <span>{props.attemptsLeft} attempts left</span>
       <WordDisplay
         word={currentGame.hiddenWord}
         letters={currentGame.usedLetters}

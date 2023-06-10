@@ -5,22 +5,21 @@ const WordDisplay = (props) => {
 
   const getDisplayedLettersArr = () => {
     let result = [];
-    for (const wordLetter in word) {
-      const isLetterDisplayed = letters.findIndex(wordLetter) !== -1;
-      result.push(isLetterDisplayed ? wordLetter : null);
+    for (const index in word) {
+      const isLetterDisplayed = letters.indexOf(word[index]) !== -1;
+      result.push(isLetterDisplayed ? word[index] : null);
     }
     return result;
   };
 
-  const displayedLetters = getDisplayedLettersArr().map((letter) => (
-    <li className={styles["displayed-letter"]}>
+  const displayedLetters = getDisplayedLettersArr().map((letter, index) => (
+    <li key={index} className={styles["displayed-letter"]}>
       <span className={`${letter && "guessed"}`}>{letter ?? "?"}</span>
     </li>
   ));
 
   return (
     <div className={styles.display}>
-      <p>{getDisplayedLettersArr()}</p>
       <ul>{displayedLetters}</ul>
     </div>
   );

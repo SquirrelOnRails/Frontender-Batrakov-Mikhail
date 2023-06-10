@@ -3,48 +3,58 @@ import { Fragment } from "react";
 import Card from "../components/UI/Card";
 import NewGameModal from "../components/HangMan/NewGameModal";
 import Game from "../components/HangMan/Game";
-import Endgame from "../components/HangMan/Endgame";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import EndgameModal from "../components/HangMan/EndgameModal";
+import { useSelector, useDispatch } from "react-redux";
+import { hangmanActions } from "../store/hangman-slice";
+import { useNavigate } from "react-router-dom";
 
 const HangMan = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const isPlaying = useSelector((state) => state.hangman.isPlaying);
   const { usedLetters, hiddenWord, attemptsLeft } = useSelector(
     (state) => state.hangman.currentGame
   );
-  const attemptsTaken = usedLetters.length;
-  const [isEndgame, setIsEndgame] = useState(false);
+  const guesses = usedLetters.length;
 
   const calcIsWordGuessed = () => {
     let correctLettersCount = 0;
-    for (const letter in hiddenWord) {
-      if (usedLetters.findIndex(letter) !== -1) {
+    for (const index in hiddenWord) {
+      if (usedLetters.indexOf(hiddenWord[index]) !== -1) {
         correctLettersCount += 1;
       }
     }
     return hiddenWord.length === correctLettersCount;
   };
 
-  const isVictory = attemptsLeft > 0 && calcIsWordGuessed();
-  const isDefeat = attemptsLeft === 0;
+  const isDefeat = isPlaying && attemptsLeft === 0 && !calcIsWordGuessed();
+  const isVictory = isPlaying && calcIsWordGuessed();
+  const isEndgame = isVictory || isDefeat;
 
-  if (isVictory || isDefeat) {
-    setIsEndgame(true);
-  }
+  const restartHandler = () => {
+    dispatch(hangmanActions.endGame());
+  };
+
+  const closeHandler = () => {
+    dispatch(hangmanActions.endGame());
+    navigate("/");
+  };
 
   return (
     <Fragment>
-      {!isPlaying && !isEndgame && <NewGameModal />}
-      {isPlaying && (
+      {!isPlaying && !isEndgame && <NewGameModal onClose={closeHandler} />}
+      {isPlaying && !isEndgame && (
         <Card>
-          <Game />
+          <Game attemptsLeft={attemptsLeft} />
         </Card>
       )}
       {isEndgame && (
-        <Endgame
+        <EndgameModal
           isVictory={isVictory}
-          attempts={attemptsTaken}
+          guesses={guesses}
           word={hiddenWord}
+          onRestart={restartHandler}
+          onClose={closeHandler}
         />
       )}
     </Fragment>

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import getWord from "../code/getWord";
+
 const hangmanInitialState = {
   currentGame: {
     hiddenWord: "",
@@ -14,10 +16,12 @@ const hangmanSlice = createSlice({
   initialState: hangmanInitialState,
   reducers: {
     newGame: (state, action) => {
-      const { attempts, word } = action.payload;
-      let newGameData = hangmanInitialState.currentGame;
+      const { attempts, wordLength } = action.payload;
+      let newGameData = { ...hangmanInitialState.currentGame };
       newGameData.attemptsLeft = attempts;
-      newGameData.hiddenWord = word;
+
+      const word = getWord(wordLength);
+      newGameData.hiddenWord = word.toUpperCase();
 
       state.currentGame = newGameData;
       state.isPlaying = true;
@@ -30,13 +34,19 @@ const hangmanSlice = createSlice({
         );
       } else if (!letter || letter.length !== 1) {
         console.error(`Invalid guess value: "${action.payload}"`);
-      } else if (/^[A-Z]$/.test(letter)) {
+      } else if (!/^[A-Z]$/.test(letter)) {
         console.error(
           `Invalid guess character: "${action.payload}". Only english alphabet letters are allowed`
         );
       }
 
       state.currentGame.usedLetters.push(letter);
+
+      const isLetterCorrect =
+        state.currentGame.hiddenWord.indexOf(letter) !== -1;
+      if (!isLetterCorrect) {
+        state.currentGame.attemptsLeft -= 1;
+      }
     },
     endGame: (state) => {
       state.isPlaying = false;

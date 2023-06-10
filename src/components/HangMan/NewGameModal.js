@@ -1,24 +1,14 @@
-import { Fragment } from "react";
-import ReactDOM from "react-dom";
-
 import Modal from "../UI/Modal";
 import Rules from "./Rules";
 import NewGameForm from "./NewGameForm";
 
-const NewGameModal = () => {
-  const modalElement = document.getElementById("modal");
+const NewGameModal = (props) => {
   return (
-    <Fragment>
-      {ReactDOM.createPortal(<h1>backdpor</h1>, modalElement)}
-      {ReactDOM.createPortal(
-        <Modal>
-          <Rules />
-          <NewGameForm />
-        </Modal>,
-        modalElement
-      )}
-      <h1>Hang Man!</h1>
-    </Fragment>
+    <Modal onClose={props.onClose}>
+      <Rules />
+      <NewGameForm />
+      <button onClick={props.onClose}>Leave game</button>
+    </Modal>
   );
 };
 
