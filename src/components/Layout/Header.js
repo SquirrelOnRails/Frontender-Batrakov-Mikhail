@@ -24,8 +24,8 @@ const Header = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/guess-game" className={navlinkClass}>
-            GuessGame!
+          <NavLink to="/hang-man" className={navlinkClass}>
+            Hang Man
           </NavLink>
         </li>
       </ul>
