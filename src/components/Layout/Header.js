@@ -1,4 +1,8 @@
+import { Fragment, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { mainActions } from "../../store/main-slice";
+import Alert from "../UI/Alert";
 
 import styles from "./Header.module.css";
 

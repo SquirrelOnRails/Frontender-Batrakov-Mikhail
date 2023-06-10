@@ -45,7 +45,7 @@ const TasksList = (props) => {
     if (!filter.isFinished) {
       result = result.filter((task) => task.isFinished === false);
     }
-    return result;
+    return result.filter((task) => !!task.id);
   };
 
   const orderTasks = (tasks) => {
