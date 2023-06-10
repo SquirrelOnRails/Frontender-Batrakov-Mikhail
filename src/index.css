@@ -15,3 +15,7 @@ code {
 .error-message {
   color: red;
 }
+
+.centered {
+  text-align: center;
+}

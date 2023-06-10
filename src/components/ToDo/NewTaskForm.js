@@ -1,7 +1,11 @@
 import Card from "../UI/Card";
 import useInput from "../../hooks/use-input";
+import { useDispatch } from "react-redux";
+import { tasksActions } from "../../store/tasks-slice";
 
 const NewTaskForm = (props) => {
+  const dispatch = useDispatch();
+
   const {
     value: title,
     setValue: setTitle,
@@ -87,7 +91,7 @@ const NewTaskForm = (props) => {
       group,
       date,
     };
-    props.onSubmit(newTask);
+    dispatch(tasksActions.addTask(newTask));
     resetFormHandler();
   };
   const resetFormHandler = () => {

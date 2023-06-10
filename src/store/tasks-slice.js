@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { FIREBASE_URL } from "../settings";
+import { mainActions } from "./main-slice";
+
 const tasksInitialState = {
   filter: {
     title: "",
@@ -12,22 +15,8 @@ const tasksInitialState = {
     group: "",
     date: "",
   },
-  list: [
-    {
-      id: "0",
-      title: "To do a ToDo",
-      description: "must finish the app",
-      date: "2012-12-12",
-      group: "Default",
-      isFinished: false,
-    },
-    {
-      id: "1",
-      title: "To learn CSS",
-      group: "Career",
-      isFinished: false,
-    },
-  ],
+  isListChanged: false,
+  list: [],
 };
 
 const tasksSlice = createSlice({
@@ -42,6 +31,7 @@ const tasksSlice = createSlice({
       newTasks.push(newTask);
 
       state.list = newTasks;
+      state.isListChanged = true;
     },
     removeTask: (state, action) => {
       let currentTasks = state.list;
@@ -54,6 +44,7 @@ const tasksSlice = createSlice({
       const newTasks = currentTasks.filter((task) => task.id !== id);
 
       state.list = newTasks;
+      state.isListChanged = true;
     },
     updateTask: (state, action) => {
       const currentTasks = state.list;
@@ -61,11 +52,28 @@ const tasksSlice = createSlice({
         (task) => task.id === action.payload.id
       );
       if (selectedIndex < 0) {
-        console.log(`Task with id=${action.payload.id} doesn't exist in store`);
+        console.error(
+          `Task with id=${action.payload.id} doesn't exist in store`
+        );
         return;
       }
 
       state.list[selectedIndex] = action.payload;
+      state.isListChanged = true;
+    },
+    updateList: (state, action) => {
+      const tasksObj = action.payload ?? tasksInitialState.list;
+
+      let reformedTasksArr = [];
+      for (const key in tasksObj) {
+        reformedTasksArr.push({
+          id: key,
+          ...tasksObj[key],
+        });
+      }
+
+      state.list = reformedTasksArr;
+      state.isListChanged = false;
     },
     toggleFinished: (state, action) => {
       const id = action.payload;
@@ -77,6 +85,7 @@ const tasksSlice = createSlice({
 
       state.list[selectedIndex].isFinished =
         !state.list[selectedIndex].isFinished;
+      state.isListChanged = true;
     },
     setOrder: (state, action) => {
       const { field, direction } = action.payload;
@@ -97,6 +106,85 @@ const tasksSlice = createSlice({
     },
   },
 });
+
+export const sendTasks = (tasksData = []) => {
+  return async (dispatch) => {
+    const operationTitle = "Updating tasks";
+
+    dispatch(
+      mainActions.alert({
+        message: "Executing request...",
+        title: operationTitle,
+        type: "pending",
+      })
+    );
+
+    const sendRequest = async (tasksData) => {
+      const response = await fetch(`${FIREBASE_URL}/userKey/tasks.json`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(tasksData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error during request execution: ${response.text()}`);
+      }
+    };
+
+    try {
+      await sendRequest(tasksData);
+
+      dispatch(
+        mainActions.alert({
+          message: "Tasks have been updated successfully!",
+          title: operationTitle,
+          type: "success",
+        })
+      );
+    } catch (ex) {
+      dispatch(
+        mainActions.alert({
+          message: ex.message,
+          title: operationTitle,
+          type: "error",
+        })
+      );
+    }
+  };
+};
+
+export const getTasks = () => {
+  return async (dispatch) => {
+    const operationTitle = "Retrieving tasks";
+
+    const sendRequest = async () => {
+      const response = await fetch(`${FIREBASE_URL}/userKey/tasks.json`, {
+        method: "GET",
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error during request execution: ${response.text()}`);
+      }
+
+      return response.json();
+    };
+
+    try {
+      const tasks = await sendRequest();
+      dispatch(tasksSlice.actions.updateList(tasks));
+    } catch (ex) {
+      dispatch(
+        mainActions.alert({
+          message: ex.message,
+          title: operationTitle,
+          type: "error",
+        })
+      );
+    }
+  };
+};
 
 export const tasksActions = tasksSlice.actions;
 
