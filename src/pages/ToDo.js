@@ -5,6 +5,7 @@ import NewTaskForm from "../components/ToDo/NewTaskForm";
 import TasksList from "../components/ToDo/TasksList";
 import Filter from "../components/ToDo/Filter";
 import { Fragment, useEffect } from "react";
+import Card from "../components/UI/Card";
 
 let isAppLoadedFirstTime = true;
 
@@ -31,9 +32,15 @@ const ToDo = () => {
 
   return (
     <Fragment>
-      <NewTaskForm />
-      <Filter />
-      <TasksList tasks={tasks} filter={filter} order={order} />
+      <Card>
+        <NewTaskForm />
+      </Card>
+      <Card>
+        <Filter />
+      </Card>
+      <Card>
+        <TasksList tasks={tasks} filter={filter} order={order} />
+      </Card>
     </Fragment>
   );
 };

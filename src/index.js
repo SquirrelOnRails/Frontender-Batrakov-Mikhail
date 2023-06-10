@@ -9,6 +9,7 @@ import App from "./App";
 import ErrorPage from "./pages/ErrorPage";
 import ToDo from "./pages/ToDo";
 import EditTask from "./pages/EditTask";
+import HangMan from "./pages/HangMan";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/to-do/:taskId",
         element: <EditTask />,
+      },
+      {
+        path: "/hang-man",
+        element: <HangMan />,
       },
     ],
   },

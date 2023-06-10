@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tasksActions } from "../../store/tasks-slice";
-import Card from "../UI/Card";
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -84,60 +83,58 @@ const Filter = () => {
   };
 
   return (
-    <Card>
-      <form>
-        <div>
-          <label htmlFor="titleDescr">Title / Description</label>
-          <input
-            id="titleDescr"
-            type="text"
-            value={filter.title}
-            onChange={onTitleDescrFilterChange}
-          />
-          <button onClick={orderTitleHandler} type="button">
-            Order {titleOrder && `(current: ${titleOrder})`}
-          </button>
-        </div>
-        <div>
-          <label htmlFor="group">Group</label>
-          <select onChange={onGroupFilterChange}>
-            <option key="unset" value="unset">
-              (any)
+    <form>
+      <div>
+        <label htmlFor="titleDescr">Title / Description</label>
+        <input
+          id="titleDescr"
+          type="text"
+          value={filter.title}
+          onChange={onTitleDescrFilterChange}
+        />
+        <button onClick={orderTitleHandler} type="button">
+          Order {titleOrder && `(current: ${titleOrder})`}
+        </button>
+      </div>
+      <div>
+        <label htmlFor="group">Group</label>
+        <select onChange={onGroupFilterChange}>
+          <option key="unset" value="unset">
+            (any)
+          </option>
+          {taskGroups.map((group) => (
+            <option key={group} value={group}>
+              {group}
             </option>
-            {taskGroups.map((group) => (
-              <option key={group} value={group}>
-                {group}
-              </option>
-            ))}
-          </select>
-          <button onClick={orderGroupHandler} type="button">
-            Order {groupOrder && `(current: ${groupOrder})`}
-          </button>
-        </div>
-        <div>
-          <label htmlFor="date">Date</label>
-          <input
-            id="date"
-            type="date"
-            value={filter.date}
-            onChange={onDateFilterChange}
-          />
-          <button onClick={orderDateHandler} type="button">
-            Order {dateOrder && `(current: ${dateOrder})`}
-          </button>
-        </div>
-        <div>
-          <button type="button" onClick={onFinishedFilterChange}>
-            {isFinished ? "Exclude" : "Include"} finished
-          </button>
-        </div>
-        <div>
-          <button onClick={clearFilterHandler} type="button">
-            Clear
-          </button>
-        </div>
-      </form>
-    </Card>
+          ))}
+        </select>
+        <button onClick={orderGroupHandler} type="button">
+          Order {groupOrder && `(current: ${groupOrder})`}
+        </button>
+      </div>
+      <div>
+        <label htmlFor="date">Date</label>
+        <input
+          id="date"
+          type="date"
+          value={filter.date}
+          onChange={onDateFilterChange}
+        />
+        <button onClick={orderDateHandler} type="button">
+          Order {dateOrder && `(current: ${dateOrder})`}
+        </button>
+      </div>
+      <div>
+        <button type="button" onClick={onFinishedFilterChange}>
+          {isFinished ? "Exclude" : "Include"} finished
+        </button>
+      </div>
+      <div>
+        <button onClick={clearFilterHandler} type="button">
+          Clear
+        </button>
+      </div>
+    </form>
   );
 };
 

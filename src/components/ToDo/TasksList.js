@@ -84,11 +84,7 @@ const TasksList = (props) => {
     );
   });
 
-  return (
-    <Card>
-      <ul>{tasksArr}</ul>
-    </Card>
-  );
+  return <ul>{tasksArr}</ul>;
 };
 
 export default TasksList;
