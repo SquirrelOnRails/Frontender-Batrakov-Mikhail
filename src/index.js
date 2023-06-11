@@ -10,6 +10,7 @@ import ErrorPage from "./pages/ErrorPage";
 import ToDo from "./pages/ToDo";
 import EditTask from "./pages/EditTask";
 import HangMan from "./pages/HangMan";
+import Login from "./pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         element: <HangMan />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 

@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import { tasksActions } from "../../store/tasks-slice";
 import { useLocation, useNavigate } from "react-router";
 
-import Card from "../UI/Card";
 import TaskItem from "./TaskItem";
 
 const TasksList = (props) => {
