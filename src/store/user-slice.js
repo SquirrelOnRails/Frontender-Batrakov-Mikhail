@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { googleLogout } from "@react-oauth/google";
 
 const userInitialState = {
   googleCredential: null,
@@ -9,7 +10,15 @@ const userSlice = createSlice({
   initialState: userInitialState,
   reducers: {
     setGoogleCredential: (state, action) => {
-      state.googleCredential = action.payload;
+      let credential = action.payload;
+      credential.provider = "GOOGLE";
+      state.googleCredential = credential;
+      localStorage.setItem("credential", JSON.stringify(credential));
+    },
+    logout: (state) => {
+      googleLogout();
+      localStorage.removeItem("credential");
+      state = userInitialState;
     },
   },
 });

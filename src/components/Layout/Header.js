@@ -5,14 +5,18 @@ import { NavLink, Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
 const Header = () => {
-  const userInfo = useSelector((state) => state.user.googleCredential);
-  const [username, setUsername] = useState("Private user");
+  // const userInfo = useSelector((state) => state.user.googleCredential);
+  const [username, setUsername] = useState("Anonymous user");
+  const userInfo = useSelector((state) => state.user);
+  const isUserLoggedIn = userInfo && userInfo.googleCredential;
 
   useEffect(() => {
-    if (userInfo) {
-      setUsername(userInfo.name ?? userInfo.email);
+    if (isUserLoggedIn) {
+      setUsername(
+        userInfo.googleCredential.name ?? userInfo.googleCredential.email
+      );
     }
-  }, [userInfo]);
+  }, [userInfo, isUserLoggedIn]);
 
   const navlinkClass = ({ isActive, isPending }) =>
     isActive ? styles.active : isPending ? styles.pending : "";
@@ -38,7 +42,8 @@ const Header = () => {
       </ul>
       <div className={styles["user-info"]}>
         <span>{username}</span>
-        <Link to="/login">Logout</Link>
+        {isUserLoggedIn && <Link to="/logout">Log Out</Link>}
+        {!isUserLoggedIn && <Link to="/login">Log In</Link>}
       </div>
     </header>
   );

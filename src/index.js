@@ -11,6 +11,7 @@ import ToDo from "./pages/ToDo";
 import EditTask from "./pages/EditTask";
 import HangMan from "./pages/HangMan";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/logout",
+    element: <Logout />,
   },
 ]);
 

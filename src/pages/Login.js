@@ -2,7 +2,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Card from "../components/UI/Card";
 import { OAUTH } from "../settings";
@@ -12,32 +12,32 @@ import { userActions } from "../store/user-slice";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isError, setIsError] = useState(false);
+  const [isGoogleError, setIsGoogleError] = useState(false);
 
-  const onGoogleSuccess = (credentialResponse) => {
-    setIsError(false);
+  const googleSuccessHandler = (credentialResponse) => {
+    setIsGoogleError(false);
 
     const userInfo = jwt_decode(credentialResponse.credential);
 
     dispatch(userActions.setGoogleCredential(userInfo));
-    localStorage.setItem("credential", credentialResponse.credential);
     navigate("/");
   };
-
-  const onGoogleError = () => {
-    setIsError(true);
+  const googleErrorHandler = () => {
+    setIsGoogleError(true);
   };
 
   return (
     <GoogleOAuthProvider clientId={OAUTH.google.clientId}>
       <Card>
-        {isError && <p className="error">An error occured trying to log in</p>}
         <GoogleLogin
-          onSuccess={onGoogleSuccess}
-          onError={onGoogleError}
+          onSuccess={googleSuccessHandler}
+          onError={googleErrorHandler}
           useOneTap
-          auto_select
         />
+        {isGoogleError && (
+          <p className="error">An error occured trying to log in</p>
+        )}
+        <Link to="/">Continue as anonymous</Link>
       </Card>
     </GoogleOAuthProvider>
   );
