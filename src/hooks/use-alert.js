@@ -21,7 +21,7 @@ const useAlert = () => {
     return () => {
       clearTimeout(alertTimeout);
     };
-  }, [isAlertShown]);
+  }, [isAlertShown, dispatch]);
 
   return {
     ...alertState,

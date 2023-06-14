@@ -1,12 +1,23 @@
-import { Fragment, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { mainActions } from "../../store/main-slice";
-import Alert from "../UI/Alert";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { NavLink, Link } from "react-router-dom";
 
 import styles from "./Header.module.css";
 
 const Header = () => {
+  // const userInfo = useSelector((state) => state.user.googleCredential);
+  const [username, setUsername] = useState("Anonymous user");
+  const userInfo = useSelector((state) => state.user);
+  const isUserLoggedIn = userInfo && userInfo.googleCredential;
+
+  useEffect(() => {
+    if (isUserLoggedIn) {
+      setUsername(
+        userInfo.googleCredential.name ?? userInfo.googleCredential.email
+      );
+    }
+  }, [userInfo, isUserLoggedIn]);
+
   const navlinkClass = ({ isActive, isPending }) =>
     isActive ? styles.active : isPending ? styles.pending : "";
 
@@ -29,6 +40,11 @@ const Header = () => {
           </NavLink>
         </li>
       </ul>
+      <div className={styles["user-info"]}>
+        <span>{username}</span>
+        {isUserLoggedIn && <Link to="/logout">Log Out</Link>}
+        {!isUserLoggedIn && <Link to="/login">Log In</Link>}
+      </div>
     </header>
   );
 };

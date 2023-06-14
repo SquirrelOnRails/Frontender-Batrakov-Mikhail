@@ -107,9 +107,10 @@ const tasksSlice = createSlice({
   },
 });
 
-export const sendTasks = (tasksData = []) => {
+export const sendTasks = (tasksData = { tasks: [], email: "" }) => {
   return async (dispatch) => {
     const operationTitle = "Updating tasks";
+    const { tasks, email } = tasksData;
 
     dispatch(
       mainActions.alert({
@@ -119,13 +120,13 @@ export const sendTasks = (tasksData = []) => {
       })
     );
 
-    const sendRequest = async (tasksData) => {
-      const response = await fetch(`${FIREBASE_URL}/userKey/tasks.json`, {
+    const sendRequest = async (tasks, email) => {
+      const response = await fetch(`${FIREBASE_URL}/${email}/tasks.json`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(tasksData),
+        body: JSON.stringify(tasks),
       });
 
       if (!response.ok) {
@@ -134,7 +135,7 @@ export const sendTasks = (tasksData = []) => {
     };
 
     try {
-      await sendRequest(tasksData);
+      await sendRequest(tasks, email);
 
       dispatch(
         mainActions.alert({
@@ -155,12 +156,12 @@ export const sendTasks = (tasksData = []) => {
   };
 };
 
-export const getTasks = () => {
+export const getTasks = (email) => {
   return async (dispatch) => {
     const operationTitle = "Retrieving tasks";
 
     const sendRequest = async () => {
-      const response = await fetch(`${FIREBASE_URL}/userKey/tasks.json`, {
+      const response = await fetch(`${FIREBASE_URL}/${email}/tasks.json`, {
         method: "GET",
       });
 
