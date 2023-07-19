@@ -20,11 +20,9 @@ const Header = () => {
   }, [userInfo, isUserLoggedIn]);
 
   const navlinkClass = ({ isActive, isPending }) =>
-    isActive ? "active" : isPending ? "pending" : "";
+    isActive ? styles.active : isPending ? styles.pending : "";
 
-  const headerClass = `${styles["header"]} ${
-    isHeaderActive && styles["active"]
-  }`;
+  const headerClass = `${styles.header} ${isHeaderActive && styles.active}`;
 
   return (
     <Fragment>
