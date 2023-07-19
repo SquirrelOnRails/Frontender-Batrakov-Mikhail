@@ -1,0 +1,107 @@
+@import "../../stylesheets/variables";
+
+.experience {
+  grid-column: container-start / container-end;
+  background-color: var(--color-three);
+  @extend %sec-padding;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    @extend %sec-heading;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color-five);
+  }
+
+  .timelines {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .separation-line {
+      position: absolute;
+      left: calc(50% - 0.1rem);
+      top: 0;
+      height: 100%;
+      width: 0.2rem;
+      background-color: var(--color-five);
+    }
+
+    .timeline {
+      width: 100%;
+      display: flex;
+
+      .icon {
+        display: flex;
+        align-items: center;
+        width: calc(50% + 1.5rem);
+
+        i {
+          color: var(--color-five);
+          font-size: 5rem;
+        }
+        .line {
+          width: 5rem;
+          height: 0.2rem;
+          background-color: var(--color-five);
+        }
+        .circle {
+          width: 3rem;
+          height: 3rem;
+          background-color: var(--color-three);
+          border: 0.2rem solid var(--color-five);
+          border-radius: 50%;
+          position: relative;
+          z-index: 1;
+        }
+        .circle::before {
+          content: "";
+          width: 2rem;
+          height: 2rem;
+          position: absolute;
+          left: calc(50% - 1rem);
+          top: calc(50% - 1rem);
+          background-color: var(--color-five);
+          border-radius: 50%;
+        }
+      }
+
+      .description {
+        width: calc(50% - 1.5rem);
+        padding: 1rem;
+      }
+
+      h3 {
+        display: inline-block;
+        font-size: 2rem;
+        color: var(--color-five);
+      }
+
+      p {
+        font-size: font-size("small");
+        font-family: "Roboto", cursive;
+        padding-bottom: 1rem;
+        color: var(--color-five);
+      }
+    }
+
+    .timeline:nth-of-type(odd) {
+      .icon {
+        justify-content: flex-end;
+      }
+      .description {
+        padding-right: 10vw;
+      }
+    }
+
+    .timeline:nth-of-type(even) {
+      .icon {
+        justify-content: flex-start;
+      }
+      .description {
+        padding-left: 10vw;
+      }
+    }
+  }
+}

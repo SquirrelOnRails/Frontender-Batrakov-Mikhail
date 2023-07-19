@@ -12,6 +12,7 @@ import EditTask from "./pages/EditTask";
 import HangMan from "./pages/HangMan";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
+import Portfolio from "./pages/Portfolio";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <Portfolio />,
+      },
       {
         path: "/to-do",
         element: <ToDo />,
