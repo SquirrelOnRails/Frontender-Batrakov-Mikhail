@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/index";
 
-import "./index.css";
+import "./index.scss";
 import App from "./App";
 import ErrorPage from "./pages/ErrorPage";
 import ToDo from "./pages/ToDo";

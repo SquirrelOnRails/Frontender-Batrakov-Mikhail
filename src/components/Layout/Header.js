@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
+import HeaderButton from "../UI/HeaderButton";
 
 const Header = () => {
-  // const userInfo = useSelector((state) => state.user.googleCredential);
   const [username, setUsername] = useState("Anonymous user");
   const userInfo = useSelector((state) => state.user);
   const isUserLoggedIn = userInfo && userInfo.googleCredential;
+  const isHeaderActive = useSelector((state) => state.main.isHeaderActive);
 
   useEffect(() => {
     if (isUserLoggedIn) {
@@ -19,33 +20,34 @@ const Header = () => {
   }, [userInfo, isUserLoggedIn]);
 
   const navlinkClass = ({ isActive, isPending }) =>
-    isActive ? styles.active : isPending ? styles.pending : "";
+    isActive ? "active" : isPending ? "pending" : "";
+
+  const headerClass = `${styles["header"]} ${
+    isHeaderActive && styles["active"]
+  }`;
 
   return (
-    <header>
-      <ul className={styles.nav}>
-        <li>
+    <Fragment>
+      <HeaderButton />
+      <header className={headerClass}>
+        <div className={styles["header__nav"]}>
           <NavLink to="/" className={navlinkClass}>
             Home
           </NavLink>
-        </li>
-        <li>
           <NavLink to="/to-do" className={navlinkClass}>
             To-Do
           </NavLink>
-        </li>
-        <li>
           <NavLink to="/hang-man" className={navlinkClass}>
             Hang Man
           </NavLink>
-        </li>
-      </ul>
-      <div className={styles["user-info"]}>
-        <span>{username}</span>
-        {isUserLoggedIn && <Link to="/logout">Log Out</Link>}
-        {!isUserLoggedIn && <Link to="/login">Log In</Link>}
-      </div>
-    </header>
+        </div>
+        <div className={styles["header__user-info"]}>
+          <span>{username}</span>
+          {isUserLoggedIn && <Link to="/logout">Log Out</Link>}
+          {!isUserLoggedIn && <Link to="/login">Log In</Link>}
+        </div>
+      </header>
+    </Fragment>
   );
 };
 
