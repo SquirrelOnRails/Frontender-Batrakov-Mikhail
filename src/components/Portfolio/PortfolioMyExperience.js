@@ -4,6 +4,11 @@ import styles from "./PortfolioMyExperience.module.scss";
 const PortfolioMyExperience = () => {
   return (
     <section className={styles.experience}>
+      <div className={styles.clipper}>
+        {new Array(30).fill(null).map(() => {
+          return <div className={styles["clipper-hole"]}></div>;
+        })}
+      </div>
       <h2 className={styles.title}>Experience & Education</h2>
       <div className={styles.timelines}>
         <div className={`${styles.timeline} ${styles.education}`}>
