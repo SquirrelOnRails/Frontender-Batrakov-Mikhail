@@ -5,8 +5,8 @@ const PortfolioMyExperience = () => {
   return (
     <section className={styles.experience}>
       <div className={styles.clipper}>
-        {new Array(30).fill(null).map(() => {
-          return <div className={styles["clipper-hole"]}></div>;
+        {new Array(30).fill(null).map((el, i) => {
+          return <div key={i} className={styles["clipper-hole"]}></div>;
         })}
       </div>
       <h2 className={styles.title}>Experience & Education</h2>

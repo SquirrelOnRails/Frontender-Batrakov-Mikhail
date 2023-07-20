@@ -1,15 +1,18 @@
 import { useState, useEffect, Fragment } from "react";
-import { useSelector } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, Link, useLocation, useNavigation } from "react-router-dom";
 
 import styles from "./Header.module.scss";
 import HeaderButton from "../UI/HeaderButton";
+import { mainActions } from "../../store/main-slice";
 
 const Header = () => {
   const [username, setUsername] = useState("Anonymous user");
   const userInfo = useSelector((state) => state.user);
   const isUserLoggedIn = userInfo && userInfo.googleCredential;
   const isHeaderActive = useSelector((state) => state.main.isHeaderActive);
+  const currentUrl = useLocation().pathname;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isUserLoggedIn) {
@@ -18,6 +21,10 @@ const Header = () => {
       );
     }
   }, [userInfo, isUserLoggedIn]);
+
+  useEffect(() => {
+    dispatch(mainActions.toggleHeader(false));
+  }, [currentUrl]);
 
   const navlinkClass = ({ isActive, isPending }) =>
     isActive ? styles.active : isPending ? styles.pending : "";

@@ -12,8 +12,8 @@
   border-radius: 50%;
   display: none; // flex
   flex-direction: column;
-  justify-content: space-evenly;
-  padding: 0 0.8rem;
+  justify-content: space-between;
+  padding: 1rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
@@ -25,16 +25,18 @@
   }
 
   &.active {
+    background-color: var(--color-one-a);
+
     div:nth-child(2) {
       opacity: 0;
     }
     div:first-child {
       transform-origin: center;
-      transform: translateY(1.5rem) rotate(45deg);
+      transform: translateY(1.75rem) rotate(45deg);
     }
     div:last-child {
       transform-origin: center;
-      transform: translateY(-1.5rem) rotate(-45deg);
+      transform: translateY(-1.75rem) rotate(-45deg);
     }
   }
 

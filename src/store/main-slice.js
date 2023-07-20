@@ -25,8 +25,12 @@ const mainSlice = createSlice({
     dismissAlert: (state) => {
       state.alert = mainInitialState.alert;
     },
-    toggleHeader: (state) => {
-      state.isHeaderActive = !state.isHeaderActive;
+    toggleHeader: (state, action) => {
+      if (action.payload != null) {
+        state.isHeaderActive = action.payload;
+      } else {
+        state.isHeaderActive = !state.isHeaderActive;
+      }
     },
   },
 });
