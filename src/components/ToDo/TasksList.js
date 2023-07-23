@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { tasksActions } from "../../store/tasks-slice";
 import { useLocation, useNavigate } from "react-router";
 
+import styles from "./TasksList.module.scss";
 import TaskItem from "./TaskItem";
 
 const TasksList = (props) => {
@@ -12,6 +13,7 @@ const TasksList = (props) => {
   const { tasks, filter, order } = props;
 
   const editTaskHandler = (taskId) => {
+    console.log(location.pathname);
     resolver(`${location.pathname}/${taskId}`);
   };
   const removeTaskHandler = (taskId) => {
@@ -83,7 +85,11 @@ const TasksList = (props) => {
     );
   });
 
-  return <ul>{tasksArr}</ul>;
+  return (
+    <section className={styles["tasks-list"]}>
+      <ul>{tasksArr}</ul>
+    </section>
+  );
 };
 
 export default TasksList;

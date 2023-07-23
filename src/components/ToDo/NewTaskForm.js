@@ -2,6 +2,8 @@ import useInput from "../../hooks/use-input";
 import { useDispatch } from "react-redux";
 import { tasksActions } from "../../store/tasks-slice";
 
+import styles from "./NewTaskForm.module.scss";
+
 const NewTaskForm = (props) => {
   const dispatch = useDispatch();
 
@@ -106,66 +108,71 @@ const NewTaskForm = (props) => {
   };
 
   return (
-    <form onSubmit={submitFormHandler} onReset={resetFormHandler}>
-      <div>
-        <label htmlFor="title">Task Title</label>
-        <input
-          id="title"
-          type="text"
-          value={title}
-          onChange={titleChangeHandler}
-          onBlur={titleBlurHandler}
-        />
-        {!isTitleValid && isTitleToutched && (
-          <p className="error-message">Title should not be empty</p>
-        )}
-      </div>
-      <div>
-        <label htmlFor="description">Description</label>
-        <textarea
-          id="description"
-          rows="2"
-          value={description}
-          onChange={descriptionChangeHandler}
-          onBlur={descriptionBlurHandler}
-        />
-        {!isDescriptionValid && isDescriptionToutched && (
-          <p className="error-message">
-            Please enter valid value for the Description
-          </p>
-        )}
-      </div>
-      <div>
-        <label htmlFor="group">Group</label>
-        <input
-          id="group"
-          type="text"
-          value={group}
-          onChange={groupChangeHandler}
-          onBlur={groupBlurHandler}
-        />
-        {!isGroupValid && isGroupToutched && (
-          <p className="error-message">Group should not be empty</p>
-        )}
-      </div>
-      <div>
-        <label htmlFor="date">Till date</label>
-        <input
-          id="date"
-          type="date"
-          value={date}
-          onChange={dateChangeHandler}
-          onBlur={dateBlurHandler}
-        />
-        {!isDateValid && isDateToutched && (
-          <p className="error-message">Date should not be prior current date</p>
-        )}
-      </div>
-      <div>
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
-      </div>
-    </form>
+    <section className={styles["new-task-form"]}>
+      <form onSubmit={submitFormHandler} onReset={resetFormHandler}>
+        <h2 className={styles.heading}>Create A New Task!</h2>
+        <div className={styles.field}>
+          <label htmlFor="title">Task Title</label>
+          <input
+            id="title"
+            type="text"
+            value={title}
+            onChange={titleChangeHandler}
+            onBlur={titleBlurHandler}
+          />
+          {!isTitleValid && isTitleToutched && (
+            <p className="error-message">Title should not be empty</p>
+          )}
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="description">Description</label>
+          <textarea
+            id="description"
+            rows="2"
+            value={description}
+            onChange={descriptionChangeHandler}
+            onBlur={descriptionBlurHandler}
+          />
+          {!isDescriptionValid && isDescriptionToutched && (
+            <p className="error-message">
+              Please enter valid value for the Description
+            </p>
+          )}
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="group">Group</label>
+          <input
+            id="group"
+            type="text"
+            value={group}
+            onChange={groupChangeHandler}
+            onBlur={groupBlurHandler}
+          />
+          {!isGroupValid && isGroupToutched && (
+            <p className="error-message">Group should not be empty</p>
+          )}
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="date">Till date</label>
+          <input
+            id="date"
+            type="date"
+            value={date}
+            onChange={dateChangeHandler}
+            onBlur={dateBlurHandler}
+          />
+          {!isDateValid && isDateToutched && (
+            <p className="error-message">
+              Date should not be prior current date
+            </p>
+          )}
+        </div>
+        <div className={styles.controlls}>
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+    </section>
   );
 };
 

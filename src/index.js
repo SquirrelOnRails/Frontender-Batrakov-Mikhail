@@ -27,10 +27,12 @@ const router = createBrowserRouter([
       {
         path: "/to-do",
         element: <ToDo />,
-      },
-      {
-        path: "/to-do/:taskId",
-        element: <EditTask />,
+        children: [
+          {
+            path: "/to-do/:taskId",
+            element: <EditTask />,
+          },
+        ],
       },
       {
         path: "/hang-man",

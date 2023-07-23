@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tasksActions } from "../../store/tasks-slice";
 
+import styles from "./Filter.module.scss";
+
 const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.tasks.filter);
@@ -83,58 +85,59 @@ const Filter = () => {
   };
 
   return (
-    <form>
-      <div>
-        <label htmlFor="titleDescr">Title / Description</label>
-        <input
-          id="titleDescr"
-          type="text"
-          value={filter.title}
-          onChange={onTitleDescrFilterChange}
-        />
-        <button onClick={orderTitleHandler} type="button">
-          Order {titleOrder && `(current: ${titleOrder})`}
-        </button>
-      </div>
-      <div>
-        <label htmlFor="group">Group</label>
-        <select onChange={onGroupFilterChange}>
-          <option key="unset" value="unset">
-            (any)
-          </option>
-          {taskGroups.map((group) => (
-            <option key={group} value={group}>
-              {group}
+    <section className={styles.filter}>
+      <form>
+        <div className={styles.title}>
+          <label htmlFor="titleDescr">Title / Description</label>
+          <input
+            id="titleDescr"
+            type="text"
+            value={filter.title}
+            onChange={onTitleDescrFilterChange}
+          />
+          <button onClick={orderTitleHandler} type="button">
+            Order {titleOrder && `(current: ${titleOrder})`}
+          </button>
+        </div>
+        <div className={styles.group}>
+          <label htmlFor="group">Group</label>
+          <select onChange={onGroupFilterChange}>
+            <option key="unset" value="unset">
+              (any)
             </option>
-          ))}
-        </select>
-        <button onClick={orderGroupHandler} type="button">
-          Order {groupOrder && `(current: ${groupOrder})`}
-        </button>
-      </div>
-      <div>
-        <label htmlFor="date">Date</label>
-        <input
-          id="date"
-          type="date"
-          value={filter.date}
-          onChange={onDateFilterChange}
-        />
-        <button onClick={orderDateHandler} type="button">
-          Order {dateOrder && `(current: ${dateOrder})`}
-        </button>
-      </div>
-      <div>
-        <button type="button" onClick={onFinishedFilterChange}>
-          {isFinished ? "Exclude" : "Include"} finished
-        </button>
-      </div>
-      <div>
-        <button onClick={clearFilterHandler} type="button">
-          Clear
-        </button>
-      </div>
-    </form>
+            {taskGroups.map((group) => (
+              <option key={group} value={group}>
+                {group}
+              </option>
+            ))}
+          </select>
+          <button onClick={orderGroupHandler} type="button">
+            Order {groupOrder && `(current: ${groupOrder})`}
+          </button>
+        </div>
+        <div className={styles.date}>
+          <label htmlFor="date">Date</label>
+          <input
+            id="date"
+            type="date"
+            value={filter.date}
+            onChange={onDateFilterChange}
+          />
+          <button onClick={orderDateHandler} type="button">
+            Order {dateOrder && `(current: ${dateOrder})`}
+          </button>
+        </div>
+        <div className={styles.controlls}>
+          <label>Controlls</label>
+          <button type="button" onClick={onFinishedFilterChange}>
+            {isFinished ? "Exc" : "Inc"} done
+          </button>
+          <button onClick={clearFilterHandler} type="button">
+            Clear
+          </button>
+        </div>
+      </form>
+    </section>
   );
 };
 

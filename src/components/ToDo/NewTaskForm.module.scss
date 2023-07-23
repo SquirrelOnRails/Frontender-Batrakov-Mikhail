@@ -1,0 +1,102 @@
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.new-task-form {
+  grid-column: center-start / center-end;
+  background-color: var(--color-two);
+  @extend %sec-padding;
+  display: flex;
+
+  .heading {
+    text-align: center;
+    font-size: font-size("medium");
+    color: var(--color-five);
+  }
+
+  form {
+    border: 0.2rem solid var(--color-five);
+    border-radius: 1rem;
+    padding: 2vw;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    .field {
+      width: 100%;
+      margin-bottom: calc(1rem + 0.7vw);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      label {
+        width: 30%;
+        font-size: font-size("small");
+        font-weight: font-weight("black");
+        text-align: center;
+        color: var(--color-five-a);
+      }
+
+      input[type="text"],
+      textarea,
+      input[type="date"] {
+        height: calc(2.2rem + 0.5vw);
+        background-color: var(--color-five-a);
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0 1vw;
+        font-size: font-size("small");
+        font-family: cursive;
+        letter-spacing: 0.1rem;
+      }
+
+      input[type="text"],
+      textarea {
+        width: 70%;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      input[type="date"] {
+      }
+
+      p {
+        width: 100%;
+        text-align: center;
+        font-size: font-size("small");
+        font-weight: font-weight("bold");
+      }
+    }
+
+    .controlls {
+      padding: 1vh 2vw;
+      display: flex;
+      height: 5rem;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      button {
+        height: calc(2rem + 1.5vw);
+        padding: 0 2vw;
+        font-size: font-size("small");
+        font-weight: font-weight("bold");
+        letter-spacing: 0.1rem;
+        color: var(--color-five);
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: 0.4rem 0.4rem 0.4rem 0.4rem var(--color-five-a);
+      }
+      button[type="submit"] {
+        order: 2;
+        background-color: var(--color-one);
+      }
+      button[type="reset"] {
+        order: 1;
+        background-color: var(--color-three-a);
+      }
+    }
+  }
+}
