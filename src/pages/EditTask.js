@@ -4,6 +4,8 @@ import Card from "../components/UI/Card";
 import useInput from "../hooks/use-input";
 import { tasksActions } from "../store/tasks-slice";
 
+import styles from "./EditTask.module.scss";
+
 const EditTask = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -82,47 +84,49 @@ const EditTask = () => {
   }
 
   return (
-    <Card>
-      <p>Edit task</p>
-      <form onSubmit={updateTaskHandler}>
-        <input type="hidden" id="taskId" value={taskId} />
-        <div>
-          <label htmlFor="title">Title</label>
-          <input id="title" value={title} onChange={titleChangeHandler} />
-          {!isTitleValid && <p>Please, enter a title</p>}
-        </div>
-        <div>
-          <label htmlFor="description">Description</label>
-          <input
-            id="description"
-            value={description}
-            onChange={descriptionChangeHandler}
-          />
-          {!isDescriptionValid && <p>Description is invalid</p>}
-        </div>
-        <div>
-          <label htmlFor="date">Till date</label>
-          <input
-            id="date"
-            value={date}
-            type="date"
-            onChange={dateChangeHandler}
-          />
-          {!isDateValid && <p>Date should not be prior current date</p>}
-        </div>
-        <div>
-          <label htmlFor="group">Group</label>
-          <input id="group" value={group} onChange={groupChangeHandler} />
-          {!isGroupValid && <p>Please, enter a valid group value</p>}
-        </div>
-        <div>
-          <button type="submit">Update</button>
-          <button type="button" onClick={cancelHandler}>
-            Cancel
-          </button>
-        </div>
-      </form>
-    </Card>
+    <section className={styles.edit}>
+      <Card className={styles.card}>
+        <form onSubmit={updateTaskHandler}>
+          <h2>Edit task</h2>
+          <input type="hidden" id="taskId" value={taskId} />
+          <div className={styles.title}>
+            <label htmlFor="title">Title</label>
+            <input id="title" value={title} onChange={titleChangeHandler} />
+            {!isTitleValid && <p>Please, enter a title</p>}
+          </div>
+          <div className={styles.description}>
+            <label htmlFor="description">Description</label>
+            <input
+              id="description"
+              value={description}
+              onChange={descriptionChangeHandler}
+            />
+            {!isDescriptionValid && <p>Description is invalid</p>}
+          </div>
+          <div className={styles.date}>
+            <label htmlFor="date">Till date</label>
+            <input
+              id="date"
+              value={date}
+              type="date"
+              onChange={dateChangeHandler}
+            />
+            {!isDateValid && <p>Date should not be prior current date</p>}
+          </div>
+          <div className={styles.group}>
+            <label htmlFor="group">Group</label>
+            <input id="group" value={group} onChange={groupChangeHandler} />
+            {!isGroupValid && <p>Please, enter a valid group value</p>}
+          </div>
+          <div className={styles.controlls}>
+            <button type="submit">Update</button>
+            <button type="button" onClick={cancelHandler}>
+              Cancel
+            </button>
+          </div>
+        </form>
+      </Card>
+    </section>
   );
 };
 

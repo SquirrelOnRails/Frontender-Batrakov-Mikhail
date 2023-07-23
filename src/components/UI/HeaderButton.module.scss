@@ -1,0 +1,48 @@
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.header-btn {
+  position: fixed;
+  top: 4rem;
+  left: 4rem;
+  width: 7rem;
+  height: 7rem;
+  z-index: 10;
+  border: 0.5rem solid var(--color-two);
+  border-radius: 50%;
+  display: none; // flex
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  div {
+    width: 100%;
+    height: 0.5rem;
+    background-color: var(--color-two);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &.active {
+    background-color: var(--color-one-a);
+
+    div:nth-child(2) {
+      opacity: 0;
+    }
+    div:first-child {
+      transform-origin: center;
+      transform: translateY(1.75rem) rotate(45deg);
+    }
+    div:last-child {
+      transform-origin: center;
+      transform: translateY(-1.75rem) rotate(-45deg);
+    }
+  }
+
+  @include media-tablet {
+    & {
+      display: flex;
+    }
+  }
+}

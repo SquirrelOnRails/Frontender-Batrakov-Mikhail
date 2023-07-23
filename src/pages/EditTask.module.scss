@@ -1,0 +1,75 @@
+@import "../stylesheets/variables";
+@import "../stylesheets/mixins";
+
+.edit {
+  @extend %sec-padding;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding-top: 20vh;
+  background-color: var(--color-five-a);
+
+  .card {
+    top: 30%;
+    background-color: var(--color-one);
+    padding: 3vw;
+
+    h2 {
+      @extend %sec-heading;
+      text-align: center;
+      color: var(--color-five);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      div {
+        display: flex;
+        margin-bottom: calc(0.5rem + 0.5vw);
+
+        label {
+          width: 20%;
+          font-size: font-size("small");
+          font-weight: font-weight("medium");
+          text-align: center;
+          color: var(--color-five);
+        }
+
+        input {
+          width: 80%;
+          font-size: font-size("small");
+          font-family: cursive;
+          padding: 0 1vw;
+          background-color: var(--color-five-a);
+          border: none;
+          border-radius: 0.5rem;
+        }
+      }
+
+      div.controlls {
+        margin-top: calc(0.5rem + 1vw);
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          margin-left: calc(0.5rem + 1vw);
+          padding: 0.5vw calc(0.5rem + 1vw);
+          font-size: font-size("small");
+          font-weight: font-weight("bold");
+          color: var(--color-five);
+          border: none;
+          border-radius: 0.5rem;
+        }
+
+        button[type="submit"] {
+          background-color: var(--color-two);
+        }
+
+        button[type="button"] {
+          background-color: var(--color-three);
+        }
+      }
+    }
+  }
+}

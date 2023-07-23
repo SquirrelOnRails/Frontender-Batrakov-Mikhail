@@ -1,0 +1,12 @@
+@import url("./stylesheets/_reset.scss");
+@import url("./stylesheets/_variables.scss");
+@import url("./stylesheets/_utilities.scss");
+@import url("./stylesheets/_mixins.scss");
+
+// TODO: перенести в utilities.css
+.error-message {
+  color: red;
+}
+.centered {
+  text-align: center;
+}

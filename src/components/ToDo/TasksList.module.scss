@@ -1,0 +1,10 @@
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.tasks-list {
+  grid-column: center-start / center-end;
+  @extend %sec-padding;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-three);
+}

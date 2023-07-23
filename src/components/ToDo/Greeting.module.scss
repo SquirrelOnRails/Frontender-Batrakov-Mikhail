@@ -1,0 +1,20 @@
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.greeting {
+  grid-column: container-start / container-end;
+  @extend %sec-padding;
+  height: 50vh;
+  background-color: var(--color-five);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  h2 {
+    @extend %sec-heading;
+  }
+  p {
+    @extend %sec-para;
+  }
+}

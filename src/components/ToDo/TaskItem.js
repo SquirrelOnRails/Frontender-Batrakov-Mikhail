@@ -1,5 +1,5 @@
 import Card from "../UI/Card";
-import styles from "./TaskItem.module.css";
+import styles from "./TaskItem.module.scss";
 
 const TaskItem = (props) => {
   const { title, description, group, date, isFinished } = props.task;
@@ -11,31 +11,35 @@ const TaskItem = (props) => {
         isExpired && styles.expired
       }`}
     >
-      <div>
-        <p>{title}</p>
+      <div className={styles.content}>
+        <h3>{title}</h3>
         {description && (
-          <div>
+          <div className={styles.description}>
             <label>description: </label>
-            <span>{description}</span>
+            <p>{description}</p>
           </div>
         )}
         {date && (
-          <div>
+          <div className={styles.date}>
             <label>date: </label>
-            <span>{date}</span>
+            <p>{date}</p>
           </div>
         )}
         {group && (
-          <div>
+          <div className={styles.group}>
             <label>group: </label>
-            <span>{group}</span>
+            <p>{group}</p>
           </div>
         )}
       </div>
-      <div>
-        <button onClick={props.onEdit}>Edit</button>
-        <button onClick={props.onRemove}>Remove</button>
-        <button onClick={props.onFinished}>
+      <div className={styles.controlls}>
+        <button className={styles.edit} onClick={props.onEdit}>
+          Edit
+        </button>
+        <button className={styles.remove} onClick={props.onRemove}>
+          Remove
+        </button>
+        <button className={styles.finished} onClick={props.onFinished}>
           Set {isFinished ? "Unfinished" : "Finished"}
         </button>
       </div>

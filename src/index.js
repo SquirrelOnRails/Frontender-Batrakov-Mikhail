@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/index";
 
-import "./index.css";
+import "./index.scss";
 import App from "./App";
 import ErrorPage from "./pages/ErrorPage";
 import ToDo from "./pages/ToDo";
@@ -12,6 +12,7 @@ import EditTask from "./pages/EditTask";
 import HangMan from "./pages/HangMan";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
+import Portfolio from "./pages/Portfolio";
 
 const router = createBrowserRouter([
   {
@@ -20,12 +21,18 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/to-do",
-        element: <ToDo />,
+        path: "/",
+        element: <Portfolio />,
       },
       {
-        path: "/to-do/:taskId",
-        element: <EditTask />,
+        path: "/to-do",
+        element: <ToDo />,
+        children: [
+          {
+            path: "/to-do/:taskId",
+            element: <EditTask />,
+          },
+        ],
       },
       {
         path: "/hang-man",

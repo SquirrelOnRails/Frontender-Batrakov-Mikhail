@@ -1,0 +1,111 @@
+// COLOR SCHEMES ...............
+html {
+  --color-one: #26de81;
+  --color-one-a: #26de8293;
+  --color-two: #fd9644;
+  --color-two-a: #fd974493;
+  --color-three: #fc5c65;
+  --color-three-a: #fc5c6499;
+  --color-four: #2bcbba;
+  --color-four-a: #2bcbbb9a;
+  --color-five: white;
+  --color-five-a: rgba(255, 255, 255, 0.5);
+}
+
+html[data-theme="dark"] {
+  --color-one: #a5b1c2;
+  --color-one-a: #a5b1c393;
+  --color-two: #3867d6;
+  --color-two-a: #3867d693;
+  --color-three: #2d98da;
+  --color-three-a: #2d98d999;
+  --color-four: #8854d0;
+  --color-four-a: #8854d09a;
+  --color-five: white;
+  --color-five-a: rgba(255, 255, 255, 0.5);
+}
+
+// FONT PROPS ...............
+$font-weights: (
+  "thin": 100,
+  "light": 300,
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+  "black": 900,
+);
+@function font-weight($font-weight-style) {
+  @return map-get($font-weights, $font-weight-style);
+}
+
+$font-sizes: (
+  "small": calc(1.2rem + 0.5vw),
+  "regular": calc(1.5rem + 1vw),
+  "medium": calc(1.5rem + 2vw),
+  "large": calc(1.5rem + 5vw),
+  "xlarge": calc(2.5rem + 5vw),
+);
+@function font-size($font-size-style) {
+  @return map-get($font-sizes, $font-size-style);
+}
+
+// SCREEN SIZES ...........
+$screen-sizes: (
+  "small": 400px,
+  "medium": 600px,
+  "tablet": 800px,
+  "desktop": 1300px,
+);
+@function screen-size($screen-size-limit) {
+  @return map-get($screen-sizes, $screen-size-limit);
+}
+
+// CUSTOM TEXT SELECTION ..........
+::selection {
+  background-color: var(--color-first);
+  opacity: 0.5;
+}
+
+// PLACEHOLDER STYLES ..........
+// background properties
+%bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+// section padding
+%sec-padding {
+  padding: 4vh 6vw;
+}
+// section heading
+%sec-heading {
+  font-size: font-size("medium");
+  font-weight: font-weight("light");
+  letter-spacing: 0.2rem;
+  color: var(--color-quinary);
+}
+// section paragraph
+%sec-para {
+  font-family: "Balsamiq Sans", cursive;
+  font-size: font-size("small");
+  letter-spacing: 0.2rem;
+  color: var(--color-quinary);
+}
+// section h3
+%sec-h3 {
+  font-size: font-size("small");
+  color: var(--color-quinary);
+}
+// section h4
+%sec-h4 {
+  color: var(--color-quinary);
+}
+
+// DARK-MODE TRANSITION .........
+html.transition,
+html.transition *,
+html.transition *::before,
+html.transition *::after {
+  transition: all 0.5s !important;
+  transition-delay: 0 !important;
+}

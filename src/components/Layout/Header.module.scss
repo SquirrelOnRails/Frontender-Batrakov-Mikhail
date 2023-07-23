@@ -1,0 +1,207 @@
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.header {
+  grid-column: container-start / container-end;
+  background-color: var(--color-four);
+  width: 100%;
+  padding: 0 2vw;
+  height: calc(3rem + 1vw);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+
+    a:link,
+    a:visited {
+      display: inline-block;
+      font-weight: font-weight("black");
+      font-size: font-size("small");
+      padding: 0 0.5rem;
+      margin: 0 0.5rem;
+      border-top: 0.2rem solid var(--color-three);
+      border-bottom: 0.2rem solid var(--color-three);
+      position: relative;
+      z-index: 1;
+      transition: all 0.5s ease-in-out;
+    }
+    a:hover,
+    a:active,
+    a.active {
+      color: var(--color-four);
+    }
+
+    a:link::before,
+    a:visited::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-three);
+      z-index: -1;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: all 0.2s ease-in-out;
+    }
+    a:hover::before,
+    a:active::before,
+    a.active::before {
+      transform: scaleY(1);
+    }
+  }
+
+  &__user-info {
+    display: flex;
+    height: 100%;
+    align-items: center;
+
+    a:link,
+    a:visited {
+      margin-left: 10px;
+      padding: 0 calc(0.5rem + 1vw);
+      font-size: font-size("small");
+      border: 0.2rem solid var(--color-three);
+      border-radius: 0.5rem;
+      background-color: var(--color-four);
+      transition: all 0.2s ease-in-out;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    a:hover,
+    a:active,
+    a.active {
+      color: var(--color-three);
+    }
+
+    a:link::before,
+    a:visited::before,
+    a:link::after,
+    a:visited::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background-color: var(--color-five-a);
+      transform-origin: center;
+      transition: all 0.3s ease-in-out;
+      z-index: -1;
+    }
+    a:link::before,
+    a:visited::before {
+      left: -100%;
+    }
+    a:link::after,
+    a:visited::after {
+      right: -100%;
+    }
+    a:hover::before,
+    a:active::before {
+      left: 0;
+    }
+    a:hover::after,
+    a:active::after {
+      right: 0;
+    }
+
+    span {
+      @extend %sec-para;
+    }
+  }
+
+  @include media-tablet {
+    display: none;
+
+    &.active {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--color-two-a);
+
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      z-index: 9;
+
+      .header__nav {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-self: center;
+
+        a:link,
+        a:visited {
+          margin: 0;
+          margin-bottom: 2vw;
+          border: 0.2rem solid var(--color-three);
+          background-color: var(--color-one);
+        }
+        a:link::before,
+        a:visited::before {
+          width: 0;
+          transform-origin: center;
+        }
+        a:hover::before,
+        a:active::before,
+        a.active::before {
+          width: 100%;
+        }
+      }
+
+      .header__user-info {
+        position: absolute;
+        right: 5vw;
+        top: 5vw;
+        height: min-content;
+        padding: 0 3vw;
+        order: 1;
+        flex-direction: column;
+        align-self: start;
+        justify-self: end;
+      }
+    }
+  }
+
+  @include media-medium {
+    &.active {
+      .header__nav {
+        a:link,
+        a:visited {
+          font-size: font-size("medium");
+          padding: 0 1.5rem;
+        }
+      }
+
+      .header__user-info {
+        a:link,
+        a:visited {
+          font-size: font-size("medium");
+          padding: 0 1.5rem;
+        }
+        span {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  @include media-small {
+    &.active {
+      .header__user-info {
+        place-items: flex-end;
+        span {
+          font-size: 2.5rem;
+          letter-spacing: 0;
+        }
+      }
+    }
+  }
+}

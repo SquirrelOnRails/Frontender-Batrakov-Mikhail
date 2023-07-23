@@ -1,0 +1,88 @@
+// .task {
+//   background-color: beige;
+// }
+
+// .task.finished {
+//   background-color: aqua;
+// }
+
+// .task.expired {
+//   background-color: rgb(203, 138, 125);
+// }
+
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.task {
+  padding: calc(0.5rem + 1vw);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-two);
+
+  &.finished {
+    background-color: var(--color-two-a);
+  }
+  &.expired {
+    background-color: var(--color-five-a);
+  }
+
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: font-size("medium");
+      font-weight: font-weight("bold");
+      font-family: cursive;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+
+      label,
+      p {
+        font-size: font-size("small");
+        letter-spacing: 0.1rem;
+      }
+      label {
+        width: 20%;
+        text-align: center;
+        font-weight: font-weight("bold");
+      }
+      p {
+        width: 80%;
+        font-family: cursive;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .controlls {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      margin: 0 calc(0.5rem + 0.5vw);
+      padding: 0.5vw calc(1rem + 0.5vw);
+      font-size: font-size("small");
+      letter-spacing: 0.1rem;
+      font-weight: font-weight("bold");
+      border: none;
+      border-radius: 0.5rem;
+      color: var(--color-five);
+    }
+    button.edit {
+      background-color: var(--color-four);
+    }
+    button.remove {
+      background-color: var(--color-three);
+    }
+    button.finished {
+      background-color: var(--color-one);
+    }
+  }
+}

@@ -7,6 +7,7 @@ const mainInitialState = {
     type: "",
     isShown: false,
   },
+  isHeaderActive: false,
 };
 
 const mainSlice = createSlice({
@@ -23,6 +24,13 @@ const mainSlice = createSlice({
     },
     dismissAlert: (state) => {
       state.alert = mainInitialState.alert;
+    },
+    toggleHeader: (state, action) => {
+      if (action.payload != null) {
+        state.isHeaderActive = action.payload;
+      } else {
+        state.isHeaderActive = !state.isHeaderActive;
+      }
     },
   },
 });

@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import { getTasks, sendTasks } from "../store/tasks-slice";
 import { Fragment, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import NewTaskForm from "../components/ToDo/NewTaskForm";
 import TasksList from "../components/ToDo/TasksList";
 import Filter from "../components/ToDo/Filter";
 import Card from "../components/UI/Card";
+import Greeting from "../components/ToDo/Greeting";
 
 let isAppLoadedFirstTime = true;
 
@@ -41,27 +42,21 @@ const ToDo = () => {
 
   return (
     <Fragment>
+      <Outlet />
       {!isUserLoggedIn && (
         <Fragment>
-          <Card>
-            <h2>This section is only available for logged in users.</h2>
-            <p>
-              You can log in by using <Link to="/login">this link</Link>.
-            </p>
-          </Card>
+          <h2>This section is only available for logged in users.</h2>
+          <p>
+            You can log in by using <Link to="/login">this link</Link>.
+          </p>
         </Fragment>
       )}
       {isUserLoggedIn && (
         <Fragment>
-          <Card>
-            <NewTaskForm />
-          </Card>
-          <Card>
-            <Filter />
-          </Card>
-          <Card>
-            <TasksList tasks={tasks} filter={filter} order={order} />
-          </Card>
+          <Greeting />
+          <NewTaskForm />
+          <Filter />
+          <TasksList tasks={tasks} filter={filter} order={order} />
         </Fragment>
       )}
     </Fragment>

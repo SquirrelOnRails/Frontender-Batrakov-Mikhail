@@ -7,6 +7,7 @@ import Alert from "./components/UI/Alert";
 import useAlert from "./hooks/use-alert";
 import { userActions } from "./store/user-slice";
 import { mainActions } from "./store/main-slice";
+import "./App.scss";
 
 function App() {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ function App() {
   } = useAlert();
 
   return (
-    <div className="App">
+    <div className="App container">
       {isAlertShown && (
         <Alert
           title={alertTitle}
