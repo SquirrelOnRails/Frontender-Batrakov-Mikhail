@@ -1,0 +1,20 @@
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.controlls {
+  grid-column: center-start / center-end;
+  background-color: var(--color-three);
+  @extend %sec-padding;
+  display: flex;
+  justify-content: space-evenly;
+
+  button {
+    padding: 2vw 4vw;
+    border: none;
+    border-radius: 1rem;
+    font-size: font-size("small");
+    color: var(--color-five);
+    letter-spacing: 0.1rem;
+    background-color: var(--color-two);
+  }
+}

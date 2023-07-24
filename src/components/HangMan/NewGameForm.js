@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { hangmanActions } from "../../store/hangman-slice";
 
+import styles from "./NewGameForm.module.scss";
+
 const NewGameForm = (props) => {
   const dispatch = useDispatch();
   const [length, setLength] = useState(6);
@@ -52,32 +54,40 @@ const NewGameForm = (props) => {
   ));
 
   return (
-    <form onSubmit={startGameHandler}>
-      <div>
-        <label htmlFor="length">Word length: </label>
-        <select id="length" value={length} onChange={lengthChangeHandler}>
-          {lengthOptions}
-        </select>
-      </div>
-      <div>
-        <label htmlFor="attempts">Attempts: </label>
-        <select id="attempts" value={attempts} onChange={attemptsChangeHandler}>
-          {attemptsOptions}
-        </select>
-      </div>
-      <div>
-        <button onClick={() => setGamemodeHandler("easy")} type="button">
-          Easy
-        </button>
-        <button onClick={() => setGamemodeHandler("normal")} type="button">
-          Normal
-        </button>
-        <button onClick={() => setGamemodeHandler("difficult")} type="button">
-          Difficult
-        </button>
-        <button type="submit">Start</button>
-      </div>
-    </form>
+    <section className={styles["new-game"]}>
+      <form onSubmit={startGameHandler}>
+        <div className={styles.presets}>
+          <button onClick={() => setGamemodeHandler("easy")} type="button">
+            Easy
+          </button>
+          <button onClick={() => setGamemodeHandler("normal")} type="button">
+            Normal
+          </button>
+          <button onClick={() => setGamemodeHandler("difficult")} type="button">
+            Difficult
+          </button>
+        </div>
+        <div className={styles["word-length"]}>
+          <label htmlFor="length">Word length: </label>
+          <select id="length" value={length} onChange={lengthChangeHandler}>
+            {lengthOptions}
+          </select>
+        </div>
+        <div className={styles["attempts"]}>
+          <label htmlFor="attempts">Attempts: </label>
+          <select
+            id="attempts"
+            value={attempts}
+            onChange={attemptsChangeHandler}
+          >
+            {attemptsOptions}
+          </select>
+        </div>
+        <div className={styles.controlls}>
+          <button type="submit">Start</button>
+        </div>
+      </form>
+    </section>
   );
 };
 

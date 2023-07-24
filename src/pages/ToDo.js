@@ -6,7 +6,6 @@ import { Link, Outlet } from "react-router-dom";
 import NewTaskForm from "../components/ToDo/NewTaskForm";
 import TasksList from "../components/ToDo/TasksList";
 import Filter from "../components/ToDo/Filter";
-import Card from "../components/UI/Card";
 import Greeting from "../components/ToDo/Greeting";
 
 let isAppLoadedFirstTime = true;

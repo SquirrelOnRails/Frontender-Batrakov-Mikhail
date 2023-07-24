@@ -1,9 +1,8 @@
 import { Fragment } from "react";
 
-import Card from "../components/UI/Card";
-import NewGameModal from "../components/HangMan/NewGameModal";
+import NewGame from "../components/HangMan/NewGame";
 import Game from "../components/HangMan/Game";
-import EndgameModal from "../components/HangMan/EndgameModal";
+import Endgame from "../components/HangMan/Endgame";
 import { useSelector, useDispatch } from "react-redux";
 import { hangmanActions } from "../store/hangman-slice";
 import { useNavigate } from "react-router-dom";
@@ -36,20 +35,16 @@ const HangMan = () => {
   };
 
   const closeHandler = () => {
-    dispatch(hangmanActions.endGame());
+    restartHandler();
     navigate("/");
   };
 
   return (
     <Fragment>
-      {!isPlaying && !isEndgame && <NewGameModal onClose={closeHandler} />}
-      {isPlaying && !isEndgame && (
-        <Card>
-          <Game attemptsLeft={attemptsLeft} />
-        </Card>
-      )}
+      {!isPlaying && !isEndgame && <NewGame onClose={closeHandler} />}
+      {isPlaying && !isEndgame && <Game attemptsLeft={attemptsLeft} />}
       {isEndgame && (
-        <EndgameModal
+        <Endgame
           isVictory={isVictory}
           guesses={guesses}
           word={hiddenWord}
