@@ -1,0 +1,19 @@
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.game {
+  grid-column: center-start / center-end;
+  @extend %sec-padding;
+  // background-color: var(--color-four);
+
+  .status {
+    font-size: font-size("medium");
+    text-align: center;
+    color: var(--color-five);
+
+    span {
+      color: var(--color-two);
+      font-weight: font-weight("black");
+    }
+  }
+}

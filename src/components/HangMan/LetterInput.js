@@ -1,5 +1,7 @@
 import useInput from "../../hooks/use-input";
 
+import styles from "./LetterInput.module.scss";
+
 const LetterInput = (props) => {
   const {
     value: letter,
@@ -21,21 +23,25 @@ const LetterInput = (props) => {
   };
 
   return (
-    <form onSubmit={letterSubmitHandler}>
-      <label>Guess the letter: </label>
-      <input
-        type="text"
-        maxLength="1"
-        onChange={onInputChange}
-        value={letter}
-      />
-      {!isValid && <p className="error">Please, provide an english letter!</p>}
-      <div>
-        <button type="submit" disabled={!isValid}>
-          Submit letter
-        </button>
-      </div>
-    </form>
+    <section className={styles["letter-input"]}>
+      <form onSubmit={letterSubmitHandler}>
+        <div className={styles.field}>
+          <label>Guess the letter: </label>
+          <input
+            type="text"
+            maxLength="1"
+            onChange={onInputChange}
+            value={letter}
+          />
+          <button type="submit" disabled={!isValid}>
+            Submit letter
+          </button>
+        </div>
+        {!isValid && (
+          <p className="error">Please, provide an english letter!</p>
+        )}
+      </form>
+    </section>
   );
 };
 

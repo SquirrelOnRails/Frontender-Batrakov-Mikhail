@@ -1,9 +1,10 @@
-import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import WordDisplay from "./WordDisplay";
 import LetterInput from "./LetterInput";
 import { hangmanActions } from "../../store/hangman-slice";
+
+import styles from "./Game.module.scss";
 
 const Game = (props) => {
   const dispatch = useDispatch();
@@ -14,14 +15,16 @@ const Game = (props) => {
   };
 
   return (
-    <Fragment>
-      <span>{props.attemptsLeft} attempts left</span>
+    <section className={styles.game}>
+      <p className={styles.status}>
+        You've got <span>{props.attemptsLeft}</span> attempts left
+      </p>
       <WordDisplay
         word={currentGame.hiddenWord}
         letters={currentGame.usedLetters}
       />
       <LetterInput onSubmit={onNewLetterSubmit} />
-    </Fragment>
+    </section>
   );
 };
 

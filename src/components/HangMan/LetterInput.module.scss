@@ -1,0 +1,55 @@
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.letter-input {
+  grid-column: center-start / center-end;
+  @extend %sec-padding;
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .field {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+
+      label {
+        font-size: font-size("medium");
+        color: var(--color-five);
+      }
+
+      input {
+        height: 10vw;
+        width: 10vw;
+        border: 0.2rem solid var(--color-five);
+        border-radius: 0.2rem;
+        background-color: var(--color-four);
+        font-size: font-size("medium");
+        font-family: cursive;
+        text-align: center;
+      }
+
+      button[type="submit"] {
+        padding: 2vw 4vw;
+        border: none;
+        border-radius: 1rem;
+        font-size: font-size("small");
+        color: var(--color-five);
+        letter-spacing: 0.1rem;
+        background-color: var(--color-two);
+      }
+    }
+
+    p {
+      width: 100%;
+      font-size: font-size("small");
+      text-align: center;
+      margin-top: 1vw;
+      color: var(--color-three);
+      font-weight: font-weight("bold");
+    }
+  }
+}

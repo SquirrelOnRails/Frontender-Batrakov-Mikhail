@@ -1,4 +1,4 @@
-import styles from "./WordDisplay.module.css";
+import styles from "./WordDisplay.module.scss";
 
 const WordDisplay = (props) => {
   const { word, letters } = props;
@@ -13,15 +13,15 @@ const WordDisplay = (props) => {
   };
 
   const displayedLetters = getDisplayedLettersArr().map((letter, index) => (
-    <li key={index} className={styles["displayed-letter"]}>
-      <span className={`${letter && "guessed"}`}>{letter ?? "?"}</span>
-    </li>
+    <div key={index} className={`${styles.letter} ${letter && styles.guessed}`}>
+      <span>{letter ?? "?"}</span>
+    </div>
   ));
 
   return (
-    <div className={styles.display}>
-      <ul>{displayedLetters}</ul>
-    </div>
+    <section className={styles["display-wrapper"]}>
+      <div className={styles.display}>{displayedLetters}</div>
+    </section>
   );
 };
 
