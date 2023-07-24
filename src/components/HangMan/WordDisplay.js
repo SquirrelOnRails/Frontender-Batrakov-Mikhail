@@ -13,10 +13,49 @@ const WordDisplay = (props) => {
   };
 
   const displayedLetters = getDisplayedLettersArr().map((letter, index) => (
-    <div key={index} className={`${styles.letter} ${letter && styles.guessed}`}>
-      <span>{letter ?? "?"}</span>
+    <div key={index} className={styles.scene}>
+      <div
+        className={`${styles.cube} ${(letter &&
+          styles["show-right"]: styles["show-front"])}`}
+      >
+        <div
+          className={`${styles["cube__face"]} 
+        ${styles["cube__face--front"]}`}
+        >
+          ?
+        </div>
+        <div
+          className={`${styles["cube__face"]} 
+          ${styles["cube__face--back"]}`}
+        ></div>
+        <div
+          className={`${styles["cube__face"]} 
+          ${styles["cube__face--right"]} 
+          ${styles.guessed}`}
+        >
+          {letter || ""}
+        </div>
+        <div
+          className={`${styles["cube__face"]} 
+          ${styles["cube__face--left"]}`}
+        ></div>
+        <div
+          className={`${styles["cube__face"]} 
+          ${styles["cube__face--top"]}`}
+        ></div>
+        <div
+          className={`${styles["cube__face"]} 
+          ${styles["cube__face--bottom"]}`}
+        ></div>
+      </div>
     </div>
   ));
+
+  {
+    /* <div key={index} className={`${styles.letter} ${letter && styles.guessed}`}>
+    <span>{letter ?? "?"}</span>
+  </div> */
+  }
 
   return (
     <section className={styles["display-wrapper"]}>

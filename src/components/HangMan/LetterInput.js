@@ -37,9 +37,7 @@ const LetterInput = (props) => {
             Submit letter
           </button>
         </div>
-        {!isValid && (
-          <p className="error">Please, provide an english letter!</p>
-        )}
+        {!isValid && <p className="error">Please, provide a latin letter!</p>}
       </form>
     </section>
   );
