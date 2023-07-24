@@ -1,0 +1,76 @@
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.new-game {
+  grid-column: center-start / center-end;
+  @extend %sec-padding;
+  background-color: var(--color-two);
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    div {
+      display: inline-flex;
+    }
+
+    .presets {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: calc(2rem + 1vw);
+
+      button {
+        padding: 2vw 4vw;
+        border: none;
+        border-radius: 1rem;
+        font-size: font-size("small");
+        color: var(--color-five);
+        letter-spacing: 0.1rem;
+      }
+      button:nth-of-type(1) {
+        background-color: var(--color-one);
+      }
+      button:nth-of-type(2) {
+        background-color: var(--color-four);
+      }
+      button:nth-of-type(3) {
+        background-color: var(--color-three);
+      }
+    }
+
+    .word-length,
+    .attempts {
+      width: 40%;
+
+      label {
+        font-size: font-size("medium");
+        color: var(--color-five);
+      }
+      select {
+        margin-left: 1vw;
+        padding: 0 2vw;
+        font-size: font-size("medium");
+        font-weight: font-weight("bold");
+        font-family: cursive;
+      }
+    }
+
+    .controlls {
+      width: 100%;
+      margin-top: calc(2rem + 1vw);
+
+      button {
+        padding: 2vw 4vw;
+        border: none;
+        margin: 0 auto;
+        border-radius: 1rem;
+        font-size: font-size("small");
+        color: var(--color-five);
+        letter-spacing: 0.1rem;
+        background-color: var(--color-one);
+      }
+    }
+  }
+}

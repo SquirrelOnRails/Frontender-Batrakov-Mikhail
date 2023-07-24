@@ -1,0 +1,100 @@
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.filter {
+  grid-column: center-start / center-end;
+  @extend %sec-padding;
+  background-color: var(--color-three);
+  display: flex;
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    div {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      label {
+        width: 100%;
+        font-size: font-size("small");
+        font-weight: font-weight("medium");
+        text-align: center;
+        letter-spacing: 0.1rem;
+        color: var(--color-five);
+      }
+
+      input,
+      select {
+        height: 3rem;
+        padding: 0 1vw;
+        font-size: font-size("small");
+        font-family: cursive;
+        background-color: var(--color-five-a);
+        border: none;
+        border-radius: 0.5rem;
+        margin-bottom: calc(0.5rem + 1vw);
+      }
+      select,
+      input[type="date"] {
+        text-align: center;
+      }
+
+      button {
+        width: 100%;
+        padding: calc(0.5rem + 0.5vw);
+        font-size: font-size("small");
+        font-weight: font-weight("bold");
+        letter-spacing: 0.1rem;
+        background-color: var(--color-five-a);
+        border: none;
+        border-radius: 0.5rem;
+        color: var(--color-five);
+      }
+    }
+    div.title {
+      width: 30%;
+    }
+    div.group,
+    div.date {
+      width: 20%;
+    }
+    div.controlls {
+      width: 20%;
+
+      button:first-of-type {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  @include media-medium {
+    form {
+      div {
+        width: 40% !important;
+      }
+      div.controlls,
+      div.date {
+        margin-top: 1rem;
+        border-top: 0.2rem solid var(--color-five);
+      }
+    }
+  }
+
+  @include media-small {
+    form {
+      div {
+        width: 100% !important;
+      }
+      div.controlls,
+      div.date,
+      div.group {
+        margin-top: 1rem;
+        border-top: 0.2rem solid var(--color-five);
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@mixin media-desctop {
+  @media screen and (min-width: screen-size("desktop")) {
+    @content;
+  }
+}
+@mixin media-tablet {
+  @media screen and (max-width: screen-size("tablet")) {
+    @content;
+  }
+}
+@mixin media-medium {
+  @media screen and (max-width: screen-size("medium")) {
+    @content;
+  }
+}
+@mixin media-small {
+  @media screen and (max-width: screen-size("small")) {
+    @content;
+  }
+}

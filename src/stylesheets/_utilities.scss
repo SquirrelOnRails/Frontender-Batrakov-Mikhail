@@ -1,0 +1,47 @@
+@import "./mixins";
+@import "./variables";
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.9;
+  background-color: var(--color-one);
+}
+
+.container {
+  display: grid;
+  grid-template-columns:
+    [container-start] 1fr [center-start] repeat(
+      6,
+      [col-start] minmax(min-content, 16.25rem) [col-end]
+    )
+    [center-end] 1fr [container-end];
+  // grid-template-rows: min-content repeat(auto-fit, min-content);
+
+  // @include media-tablet {
+  //   grid-template-rows: min-content repeat(auto-fit, min-content);
+  // }
+}
+
+li {
+  list-style: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: var(--color-five);
+
+  font-weight: font-weight("light");
+  font-size: font-size("small");
+  letter-spacing: 0.2rem;
+}
+
+i {
+  color: var(--color-two);
+  font-size: font-size("medium");
+  letter-spacing: 0;
+}

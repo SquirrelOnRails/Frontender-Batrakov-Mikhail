@@ -1,0 +1,51 @@
+@import "../../stylesheets/variables";
+
+.welcome {
+  grid-column: container-start / container-end;
+  // background-image: url("");
+  background-color: white;
+  @extend %sec-padding;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  .title {
+    font-size: font-size("large");
+    font-weight: font-weight("light");
+  }
+  .para {
+    @extend %sec-para;
+  }
+  .title,
+  .para {
+  }
+
+  .social {
+    padding: 2vh 2vw;
+    place-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a:link,
+    a:visited {
+      display: inline-block;
+
+      i {
+        height: inherit;
+        display: block;
+        font-size: calc(1rem + 3vw);
+        border-radius: 50%;
+        overflow: hidden;
+      }
+    }
+    a:hover,
+    a:active {
+      i {
+        color: var(--color-one);
+      }
+    }
+  }
+}
