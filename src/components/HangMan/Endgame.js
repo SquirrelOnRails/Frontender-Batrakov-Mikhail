@@ -18,7 +18,12 @@ const Endgame = (props) => {
         </p>
       )}
       <div className={styles.controlls}>
-        <button onClick={props.onRestart}>Restart</button>
+        <button className={styles.restart} onClick={props.onRestart}>
+          Restart
+        </button>
+        <button className={styles["leave-game"]} onClick={props.onClose}>
+          Leave Game
+        </button>
       </div>
     </section>
   );

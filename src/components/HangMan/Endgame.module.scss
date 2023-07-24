@@ -6,14 +6,40 @@
   @extend %sec-padding;
   display: flex;
   flex-direction: column;
+  place-content: center;
+  background-color: var(--color-three);
 
   h2 {
     @extend %sec-heading;
     text-align: center;
+    color: var(--color-five);
   }
 
   .reveal,
   .details {
     font-size: font-size("small");
+    text-align: center;
+    color: var(--color-five);
+  }
+
+  .controlls {
+    margin-top: calc(2rem + 2vw);
+    display: flex;
+    justify-content: space-evenly;
+
+    button {
+      padding: 2vw 4vw;
+      border: none;
+      border-radius: 1rem;
+      font-size: font-size("small");
+      color: var(--color-five);
+      letter-spacing: 0.1rem;
+    }
+    .restart {
+      background-color: var(--color-one);
+    }
+    .leave-game {
+      background-color: var(--color-four);
+    }
   }
 }

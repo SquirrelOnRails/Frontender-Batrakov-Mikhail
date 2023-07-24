@@ -35,7 +35,7 @@ const HangMan = () => {
   };
 
   const closeHandler = () => {
-    dispatch(hangmanActions.endGame());
+    restartHandler();
     navigate("/");
   };
 
