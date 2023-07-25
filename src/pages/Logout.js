@@ -11,7 +11,7 @@ const Logout = () => {
   useEffect(() => {
     dispatch(userActions.logout());
     navigate("/");
-  });
+  }, []);
 };
 
 export default Logout;
