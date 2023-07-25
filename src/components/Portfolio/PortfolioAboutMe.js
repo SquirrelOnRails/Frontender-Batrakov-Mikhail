@@ -24,11 +24,6 @@ const PortfolioAboutMe = () => {
             <p>Bishkek, Kyrgyzstan</p>
           </li>
         </ul>
-
-        <p className={styles.para}>
-          Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum
-          dolor sit amet, Lorem ipsum dolor sit amet.
-        </p>
       </section>
     </Fragment>
   );
