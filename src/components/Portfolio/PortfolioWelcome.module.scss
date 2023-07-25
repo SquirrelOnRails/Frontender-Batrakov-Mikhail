@@ -1,4 +1,5 @@
 @import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
 
 .welcome {
   grid-column: container-start / container-end;
@@ -45,6 +46,21 @@
     a:active {
       i {
         color: var(--color-one);
+      }
+    }
+  }
+
+  @include media-small {
+    height: 60vh;
+
+    .social {
+      padding: 1vw;
+
+      a:link,
+      a:visited {
+        i {
+          font-size: 4rem;
+        }
       }
     }
   }

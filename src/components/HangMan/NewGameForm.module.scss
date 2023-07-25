@@ -43,6 +43,9 @@
     .word-length,
     .attempts {
       width: 40%;
+      display: flex;
+      place-items: center;
+      place-content: center;
 
       label {
         font-size: font-size("medium");
@@ -50,7 +53,8 @@
       }
       select {
         margin-left: 1vw;
-        padding: 0 2vw;
+        height: fit-content;
+        padding: 2vw;
         font-size: font-size("medium");
         font-weight: font-weight("bold");
         font-family: cursive;
@@ -70,6 +74,15 @@
         color: var(--color-five);
         letter-spacing: 0.1rem;
         background-color: var(--color-one);
+      }
+    }
+  }
+
+  @include media-small {
+    .presets,
+    .controlls {
+      button {
+        font-size: 2rem !important;
       }
     }
   }

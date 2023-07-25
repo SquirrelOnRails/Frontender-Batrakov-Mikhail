@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tasksActions } from "../../store/tasks-slice";
 
@@ -8,6 +8,7 @@ const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.tasks.filter);
   const [isFinished, setIsFinished] = useState(filter.isFinished);
+  const [isFilterShown, setIsFilterShown] = useState(false);
   const {
     title: titleOrder,
     group: groupOrder,
@@ -84,60 +85,75 @@ const Filter = () => {
     );
   };
 
+  const filterToggleHandler = () => {
+    setIsFilterShown(!isFilterShown);
+  };
+
   return (
-    <section className={styles.filter}>
-      <form>
-        <div className={styles.title}>
-          <label htmlFor="titleDescr">Title / Description</label>
-          <input
-            id="titleDescr"
-            type="text"
-            value={filter.title}
-            onChange={onTitleDescrFilterChange}
-          />
-          <button onClick={orderTitleHandler} type="button">
-            Order {titleOrder && `(current: ${titleOrder})`}
-          </button>
-        </div>
-        <div className={styles.group}>
-          <label htmlFor="group">Group</label>
-          <select onChange={onGroupFilterChange}>
-            <option key="unset" value="unset">
-              (any)
-            </option>
-            {taskGroups.map((group) => (
-              <option key={group} value={group}>
-                {group}
+    <Fragment>
+      <div className={styles["filter-controlls"]}>
+        <button
+          className={styles["filter-btn"]}
+          id="filter-btn"
+          onClick={filterToggleHandler}
+        >
+          {isFilterShown ? "Hide" : "Show"} Filters
+        </button>
+      </div>
+      <section className={`${styles.filter} ${isFilterShown && styles.active}`}>
+        <form>
+          <div className={styles.title}>
+            <label htmlFor="titleDescr">Title / Description</label>
+            <input
+              id="titleDescr"
+              type="text"
+              value={filter.title}
+              onChange={onTitleDescrFilterChange}
+            />
+            <button onClick={orderTitleHandler} type="button">
+              Order {titleOrder && `(current: ${titleOrder})`}
+            </button>
+          </div>
+          <div className={styles.group}>
+            <label htmlFor="group">Group</label>
+            <select onChange={onGroupFilterChange}>
+              <option key="unset" value="unset">
+                (any)
               </option>
-            ))}
-          </select>
-          <button onClick={orderGroupHandler} type="button">
-            Order {groupOrder && `(current: ${groupOrder})`}
-          </button>
-        </div>
-        <div className={styles.date}>
-          <label htmlFor="date">Date</label>
-          <input
-            id="date"
-            type="date"
-            value={filter.date}
-            onChange={onDateFilterChange}
-          />
-          <button onClick={orderDateHandler} type="button">
-            Order {dateOrder && `(current: ${dateOrder})`}
-          </button>
-        </div>
-        <div className={styles.controlls}>
-          <label>Controlls</label>
-          <button type="button" onClick={onFinishedFilterChange}>
-            {isFinished ? "Exc" : "Inc"} done
-          </button>
-          <button onClick={clearFilterHandler} type="button">
-            Clear
-          </button>
-        </div>
-      </form>
-    </section>
+              {taskGroups.map((group) => (
+                <option key={group} value={group}>
+                  {group}
+                </option>
+              ))}
+            </select>
+            <button onClick={orderGroupHandler} type="button">
+              Order {groupOrder && `(current: ${groupOrder})`}
+            </button>
+          </div>
+          <div className={styles.date}>
+            <label htmlFor="date">Date</label>
+            <input
+              id="date"
+              type="date"
+              value={filter.date}
+              onChange={onDateFilterChange}
+            />
+            <button onClick={orderDateHandler} type="button">
+              Order {dateOrder && `(current: ${dateOrder})`}
+            </button>
+          </div>
+          <div className={styles.controlls}>
+            <label>Controlls</label>
+            <button type="button" onClick={onFinishedFilterChange}>
+              {isFinished ? "Exc" : "Inc"} done
+            </button>
+            <button onClick={clearFilterHandler} type="button">
+              Clear
+            </button>
+          </div>
+        </form>
+      </section>
+    </Fragment>
   );
 };
 

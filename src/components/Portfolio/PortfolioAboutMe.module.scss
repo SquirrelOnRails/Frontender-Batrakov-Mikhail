@@ -1,9 +1,14 @@
 @import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
 
 .about-me_image {
   grid-column: container-start / col-end 2;
   height: 70vh;
   background-color: var(--color-four);
+
+  @include media-small {
+    height: 40vh;
+  }
 }
 
 .about-me_content {
@@ -34,5 +39,9 @@
   }
 
   .para {
+  }
+
+  @include media-small {
+    height: 40vh;
   }
 }
