@@ -17,4 +17,32 @@
   p {
     @extend %sec-para;
   }
+
+  @include media-tablet {
+    height: 60vh;
+
+    h2,
+    p {
+      text-align: center;
+    }
+    h2 {
+      font-size: font-size("large");
+    }
+    p {
+      font-size: font-size("medium");
+    }
+  }
+
+  @include media-small {
+    h2 {
+      font-size: 2.8rem;
+      font-weight: font-weight("bold");
+      text-align: center;
+    }
+
+    p {
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
 }

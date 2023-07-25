@@ -44,6 +44,11 @@
   @include media-tablet {
     & {
       display: flex;
+
+      top: calc(2rem + 2vw);
+      left: calc(2rem + 2vw);
+      width: calc(4rem + 4vw);
+      height: calc(4rem + 4vw);
     }
   }
 }

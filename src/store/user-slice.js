@@ -18,7 +18,7 @@ const userSlice = createSlice({
     logout: (state) => {
       googleLogout();
       localStorage.removeItem("credential");
-      state = userInitialState;
+      state.googleCredential = userInitialState.googleCredential;
     },
   },
 });

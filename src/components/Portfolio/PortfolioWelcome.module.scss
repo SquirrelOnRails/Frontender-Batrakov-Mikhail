@@ -1,11 +1,12 @@
 @import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
 
 .welcome {
   grid-column: container-start / container-end;
   // background-image: url("");
   background-color: white;
   @extend %sec-padding;
-  height: 90vh;
+  height: calc(100vh - 3rem - 1vw);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -17,6 +18,7 @@
   }
   .para {
     @extend %sec-para;
+    font-size: font-size("medium");
   }
   .title,
   .para {
@@ -36,7 +38,7 @@
       i {
         height: inherit;
         display: block;
-        font-size: calc(1rem + 3vw);
+        font-size: calc(6rem + 1vw);
         border-radius: 50%;
         overflow: hidden;
       }
@@ -45,6 +47,37 @@
     a:active {
       i {
         color: var(--color-one);
+      }
+    }
+  }
+
+  @include media-tablet {
+    height: 100vh;
+
+    .title {
+      font-size: font-size("xlarge");
+    }
+  }
+
+  @include media-medium {
+    height: 55vh;
+
+    h1,
+    p {
+      align-self: center;
+      text-align: center;
+    }
+  }
+
+  @include media-small {
+    .social {
+      padding: 1vw;
+
+      a:link,
+      a:visited {
+        i {
+          font-size: 6rem;
+        }
       }
     }
   }
