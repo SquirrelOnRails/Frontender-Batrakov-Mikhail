@@ -17,4 +17,10 @@
     letter-spacing: 0.1rem;
     background-color: var(--color-two);
   }
+
+  @include media-small {
+    button {
+      font-size: 2rem;
+    }
+  }
 }

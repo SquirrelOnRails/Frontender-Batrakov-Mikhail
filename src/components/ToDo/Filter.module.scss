@@ -1,11 +1,33 @@
 @import "../../stylesheets/variables";
 @import "../../stylesheets/mixins";
 
+.filter-controlls {
+  grid-column: center-start / center-end;
+  background-color: var(--color-three);
+  display: flex;
+  place-content: center;
+  padding: 2vw 0;
+
+  .filter-btn {
+    padding: 1.5vw;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--color-one);
+    font-size: font-size("small");
+    font-weight: font-weight("bold");
+    color: var(--color-five);
+  }
+}
+
 .filter {
   grid-column: center-start / center-end;
   @extend %sec-padding;
   background-color: var(--color-three);
-  display: flex;
+  display: none; // flex
+
+  &.active {
+    display: flex;
+  }
 
   form {
     width: 100%;

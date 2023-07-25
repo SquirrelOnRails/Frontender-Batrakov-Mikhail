@@ -1,14 +1,20 @@
 @import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
 
 .about-me_image {
   grid-column: container-start / col-end 2;
-  height: 70vh;
+  height: 55vh;
   background-color: var(--color-four);
+
+  @include media-medium {
+    // height: 45vh;
+    display: none;
+  }
 }
 
 .about-me_content {
   grid-column: col-start 3 / container-end;
-  height: 70vh;
+  height: 55vh;
   background-color: var(--color-five);
   padding: 4vw;
   display: flex;
@@ -20,7 +26,7 @@
     display: inline-block;
   }
   label {
-    min-width: 10vw;
+    width: 12vw;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     color: var(--color-three);
@@ -31,8 +37,30 @@
     width: fit-content;
     font-size: font-size("small");
     font-family: "Roboto", cursive;
+    word-wrap: break-word;
   }
 
   .para {
+  }
+
+  @include media-tablet {
+    label {
+      width: 15vw;
+    }
+  }
+
+  @include media-medium {
+    grid-column: center-start / center-end;
+    background-color: var(--color-five-a);
+    height: 45vh;
+
+    label {
+      width: 100%;
+      font-size: font-size("medium");
+    }
+    p {
+      width: 100%;
+      font-size: font-size("medium");
+    }
   }
 }

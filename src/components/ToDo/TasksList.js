@@ -87,6 +87,7 @@ const TasksList = (props) => {
 
   return (
     <section className={styles["tasks-list"]}>
+      {tasksArr.length === 0 && <p>No Tasks To Show</p>}
       <ul>{tasksArr}</ul>
     </section>
   );

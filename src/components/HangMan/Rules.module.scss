@@ -4,10 +4,12 @@
 .rules {
   grid-column: container-start / container-end;
   @extend %sec-padding;
+  height: 60vh;
   background-color: var(--color-five);
 
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 
   h2 {
     @extend %sec-heading;
@@ -23,6 +25,30 @@
       @extend %sec-para;
       list-style: circle;
       text-shadow: 0.1rem 0.1rem var(--color-four-a);
+    }
+  }
+
+  @include media-medium {
+    height: 75vh;
+
+    h2 {
+      font-weight: font-weight("bold");
+    }
+  }
+
+  @include media-small {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 10rem;
+
+    h2 {
+      font-size: 3rem;
+    }
+
+    ul {
+      li {
+        font-size: 1.8rem;
+      }
     }
   }
 }

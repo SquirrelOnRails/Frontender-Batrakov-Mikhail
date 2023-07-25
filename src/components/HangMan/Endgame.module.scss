@@ -4,6 +4,7 @@
 .endgame {
   grid-column: center-start / center-end;
   @extend %sec-padding;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   place-content: center;
@@ -18,8 +19,13 @@
   .reveal,
   .details {
     font-size: font-size("small");
+    letter-spacing: 0.1rem;
     text-align: center;
     color: var(--color-five);
+  }
+
+  .reveal span {
+    color: var(--color-one);
   }
 
   .controlls {
@@ -40,6 +46,24 @@
     }
     .leave-game {
       background-color: var(--color-four);
+    }
+  }
+
+  @include media-small {
+    h2 {
+      font-size: 3rem;
+      font-weight: font-weight("bold");
+    }
+
+    .reveal,
+    .details {
+      font-size: 2rem;
+    }
+
+    .controlls {
+      button {
+        font-size: 2rem;
+      }
     }
   }
 }

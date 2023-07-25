@@ -16,4 +16,8 @@
       font-weight: font-weight("black");
     }
   }
+
+  @include media-small {
+    padding-top: 20vh;
+  }
 }

@@ -18,7 +18,6 @@ function App() {
     if (!(userCredential.googleCredential || userCredential.basicCredential)) {
       const localCredential = JSON.parse(localStorage.getItem("credential"));
       if (!localCredential) {
-        // navigate("/login");
         dispatch(
           mainActions.alert({
             title: "You are not logged in!",
