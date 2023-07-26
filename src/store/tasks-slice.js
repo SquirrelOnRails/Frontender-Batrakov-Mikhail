@@ -67,8 +67,8 @@ const tasksSlice = createSlice({
       let reformedTasksArr = [];
       for (const key in tasksObj) {
         reformedTasksArr.push({
-          id: key,
           ...tasksObj[key],
+          id: key,
         });
       }
 
