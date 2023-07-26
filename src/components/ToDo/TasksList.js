@@ -13,7 +13,6 @@ const TasksList = (props) => {
   const { tasks, filter, order } = props;
 
   const editTaskHandler = (taskId) => {
-    console.log(location.pathname);
     resolver(`${location.pathname}/${taskId}`);
   };
   const removeTaskHandler = (taskId) => {

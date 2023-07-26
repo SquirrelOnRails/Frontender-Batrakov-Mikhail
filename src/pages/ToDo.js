@@ -13,6 +13,7 @@ let isAppLoadedFirstTime = true;
 const ToDo = () => {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasks.list);
+  const tasksCount = tasks.length;
   const isListChanged = useSelector((state) => state.tasks.isListChanged);
   const filter = useSelector((state) => state.tasks.filter);
   const order = useSelector((state) => state.tasks.order);
@@ -26,7 +27,7 @@ const ToDo = () => {
 
   useEffect(() => {
     dispatch(getTasks(userEmail));
-  }, [dispatch, userEmail]);
+  }, [dispatch, userEmail, tasksCount]);
 
   useEffect(() => {
     if (isAppLoadedFirstTime) {
