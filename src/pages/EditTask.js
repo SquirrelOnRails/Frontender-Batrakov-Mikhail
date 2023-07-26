@@ -41,6 +41,7 @@ const EditTask = () => {
     const today = new Date(new Date().setHours(0, 0, 0, 0));
     return selectedDate >= today;
   }, task.date);
+  const isFinished = task.isFinished;
 
   const isFormValid =
     isTitleValid && isDescriptionValid && isDateValid && isGroupValid;
@@ -74,6 +75,7 @@ const EditTask = () => {
       description,
       group,
       date,
+      isFinished,
     };
     dispatch(tasksActions.updateTask(updatedTask));
     navigate("/to-do");
