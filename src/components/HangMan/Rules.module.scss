@@ -32,6 +32,7 @@
 
   @include media-medium {
     height: 75vh;
+    background-position: 30%;
 
     h2 {
       font-weight: font-weight("bold");
@@ -42,6 +43,7 @@
     height: auto;
     min-height: 100vh;
     padding-top: 10rem;
+    background-position: 25%;
 
     h2 {
       font-size: 3rem;

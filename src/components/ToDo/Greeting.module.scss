@@ -5,7 +5,9 @@
   grid-column: container-start / container-end;
   @extend %sec-padding;
   height: 50vh;
-  background-color: var(--color-five);
+  background-image: linear-gradient(var(--color-two-a), var(--color-five-a)),
+    url("../../../public/img/todo/todo-bg.png");
+  @extend %bg;
 
   display: flex;
   flex-direction: column;
