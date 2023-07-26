@@ -3,8 +3,8 @@
 
 .welcome {
   grid-column: container-start / container-end;
-  // background-image: url("");
-  background-color: white;
+  background-image: url("../../../public/img/portfolio/bg-main.png");
+  @extend %bg;
   @extend %sec-padding;
   height: calc(100vh - 3rem - 1vw);
   display: flex;
@@ -22,6 +22,28 @@
   }
   .title,
   .para {
+    color: transparent;
+    background-image: linear-gradient(
+      0deg,
+      var(--color-one),
+      var(--color-one),
+      var(--color-one),
+      var(--color-one),
+      var(--color-one),
+      var(--color-five),
+      var(--color-five),
+      var(--color-one),
+      var(--color-one),
+      var(--color-one),
+      var(--color-one),
+      var(--color-one)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
   }
 
   .social {

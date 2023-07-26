@@ -1,4 +1,4 @@
-@mixin media-desctop {
+@mixin media-desktop {
   @media screen and (min-width: screen-size("desktop")) {
     @content;
   }
