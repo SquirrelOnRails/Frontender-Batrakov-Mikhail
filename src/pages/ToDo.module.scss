@@ -1,0 +1,24 @@
+@import "../stylesheets/variables";
+@import "../stylesheets/mixins";
+
+.unauthorized {
+  grid-column: center-start / center-end;
+  height: calc(100vh - 3rem - 1vw);
+  @extend %sec-padding;
+
+  h2 {
+    @extend %sec-heading;
+    text-align: center;
+    color: var(--color-five);
+  }
+
+  p {
+    @extend %sec-para;
+    text-align: center;
+    color: var(--color-five);
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}

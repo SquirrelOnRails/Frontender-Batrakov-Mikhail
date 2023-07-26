@@ -1,12 +1,15 @@
-import styles from "./Alert.module.css";
+import styles from "./Alert.module.scss";
 
 const Alert = (props) => {
   const alertTypeClass = styles[props.type];
   return (
-    <div className={`${styles.alert} ${alertTypeClass}`}>
+    <div
+      onClick={props.onClose}
+      className={`${styles.alert} ${alertTypeClass}`}
+    >
       <label>{props.title}</label>
-      <span>{props.message}</span>
-      <button onClick={props.onClose}>X</button>
+      <p className={styles.para}>{props.message}</p>
+      <p className={styles.hint}>tap anywhere to close</p>
     </div>
   );
 };

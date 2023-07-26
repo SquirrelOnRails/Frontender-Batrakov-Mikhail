@@ -8,6 +8,8 @@ import TasksList from "../components/ToDo/TasksList";
 import Filter from "../components/ToDo/Filter";
 import Greeting from "../components/ToDo/Greeting";
 
+import styles from "./ToDo.module.scss";
+
 let isAppLoadedFirstTime = true;
 
 const ToDo = () => {
@@ -44,12 +46,12 @@ const ToDo = () => {
     <Fragment>
       <Outlet />
       {!isUserLoggedIn && (
-        <Fragment>
-          <h2>This section is only available for logged in users.</h2>
+        <section className={styles.unauthorized}>
+          <h2>This section is available to authorized users only.</h2>
           <p>
-            You can log in by using <Link to="/login">this link</Link>.
+            You can Log In using <Link to="/login">this link</Link>.
           </p>
-        </Fragment>
+        </section>
       )}
       {isUserLoggedIn && (
         <Fragment>

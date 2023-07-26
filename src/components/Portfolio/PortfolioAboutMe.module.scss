@@ -4,10 +4,11 @@
 .about-me_image {
   grid-column: container-start / col-end 2;
   height: 55vh;
-  background-color: var(--color-four);
+  @extend %bg;
+  background-image: linear-gradient(var(--color-four-a), var(--color-two-a)),
+    url("../../../public/img/portfolio/bg-01.png");
 
   @include media-medium {
-    // height: 45vh;
     display: none;
   }
 }
@@ -47,20 +48,35 @@
     label {
       width: 15vw;
     }
+
+    ul {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
   }
 
   @include media-medium {
     grid-column: center-start / center-end;
-    background-color: var(--color-five-a);
-    height: 45vh;
+    height: auto;
+    background: none;
+    background-image: linear-gradient(var(--color-four-a), var(--color-two-a)),
+      url("../../../public/img/portfolio/bg-01.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 
     label {
       width: 100%;
       font-size: font-size("medium");
+      color: var(--color-five);
     }
     p {
       width: 100%;
       font-size: font-size("medium");
+      color: var(--color-two);
+      text-shadow: 0.1rem 0.1rem 0.2rem var(--color-five);
     }
   }
 }

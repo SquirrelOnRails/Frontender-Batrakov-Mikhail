@@ -1,0 +1,75 @@
+@import "../../stylesheets/variables";
+@import "../../stylesheets/mixins";
+
+.alert {
+  position: fixed;
+  z-index: 100;
+  background-color: var(--color-four);
+  top: 5.5rem;
+  right: 5.5rem;
+  width: 30rem;
+  min-height: 10rem;
+  vertical-align: middle;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &.success {
+    background-color: var(--color-one);
+  }
+  &.error {
+    background-color: var(--color-three);
+  }
+  &.pending {
+    background-color: var(--color-two);
+  }
+
+  label {
+    font-size: font-size("small");
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-five);
+  }
+
+  .para {
+    font-size: font-size("small");
+    text-align: center;
+    color: var(--color-five);
+  }
+
+  .hint {
+    font-size: 1rem;
+    text-align: end;
+  }
+
+  button {
+    float: right;
+    height: 2rem;
+    width: 3rem;
+  }
+
+  @include media-tablet {
+    top: 3rem;
+    right: 3rem;
+
+    .hint {
+      font-size: 1.3rem;
+    }
+  }
+
+  @include media-medium {
+    width: 28rem;
+
+    .hint {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  @include media-small {
+    width: 65%;
+    padding: 0.5rem;
+  }
+}
