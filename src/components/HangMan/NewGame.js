@@ -8,10 +8,7 @@ const NewGame = (props) => {
   return (
     <Fragment>
       <Rules />
-      <NewGameForm />
-      <section className={styles["controlls"]}>
-        <button onClick={props.onClose}>Leave game</button>
-      </section>
+      <NewGameForm onClose={props.onClose} />
     </Fragment>
   );
 };

@@ -4,7 +4,6 @@
 .endgame {
   grid-column: center-start / center-end;
   @extend %sec-padding;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   place-content: center;
