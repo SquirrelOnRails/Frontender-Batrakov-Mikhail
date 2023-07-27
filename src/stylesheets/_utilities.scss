@@ -21,6 +21,12 @@ body {
     [center-end] 1fr [container-end];
 }
 
+// CUSTOM TEXT SELECTION ..........
+::selection {
+  background-color: var(--color-one-a);
+  opacity: 0.5;
+}
+
 li {
   list-style: none;
 }
@@ -39,4 +45,32 @@ i {
   color: var(--color-two);
   font-size: font-size("medium");
   letter-spacing: 0;
+}
+
+button {
+  cursor: pointer;
+
+  &:hover {
+    animation-name: kf-btn__shake;
+    animation-duration: 0.2s;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes kf-btn__shake {
+  0% {
+    transform: rotateZ(5deg);
+  }
+
+  33% {
+    transform: rotateZ(0deg);
+  }
+
+  66% {
+    transform: rotateZ(-5deg);
+  }
+
+  100% {
+    transform: rotateZ(0deg);
+  }
 }

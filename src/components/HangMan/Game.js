@@ -10,6 +10,9 @@ import { Fragment } from "react";
 const Game = (props) => {
   const dispatch = useDispatch();
   const currentGame = useSelector((state) => state.hangman.currentGame);
+  const distinctUsedLetters = currentGame.usedLetters.filter(
+    (val, idx, src) => src.indexOf(val) === idx
+  );
 
   const onNewLetterSubmit = (letter) => {
     dispatch(hangmanActions.guessLetter(letter));
@@ -28,7 +31,25 @@ const Game = (props) => {
       />
       {!props.isEndgame && (
         <Fragment>
+          <div className={styles.tries}>
+            <label>Your Tries:</label>
+            {distinctUsedLetters.map((letter, idx) => (
+              <div
+                key={idx}
+                className={`${styles.letter}
+                ${
+                  currentGame.hiddenWord.indexOf(letter) < 0
+                    ? styles.failed
+                    : styles.succeeded
+                }`}
+              >
+                {letter}
+              </div>
+            ))}
+          </div>
+
           <LetterInput onSubmit={onNewLetterSubmit} />
+
           <button className={styles["leave-btn"]} onClick={props.onClose}>
             Leave Game
           </button>
