@@ -51,12 +51,6 @@ const WordDisplay = (props) => {
     </div>
   ));
 
-  {
-    /* <div key={index} className={`${styles.letter} ${letter && styles.guessed}`}>
-    <span>{letter ?? "?"}</span>
-  </div> */
-  }
-
   return (
     <section className={styles["display-wrapper"]}>
       <div className={styles.display}>{displayedLetters}</div>
