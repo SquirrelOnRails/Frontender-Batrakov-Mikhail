@@ -24,19 +24,9 @@
   .para {
     color: transparent;
     background-image: linear-gradient(
-      0deg,
-      var(--color-one),
-      var(--color-one),
-      var(--color-one),
-      var(--color-one),
-      var(--color-one),
-      var(--color-five),
-      var(--color-five),
-      var(--color-one),
-      var(--color-one),
-      var(--color-one),
-      var(--color-one),
-      var(--color-one)
+      90deg,
+      var(--color-two),
+      var(--color-four)
     );
     background-clip: text;
     -webkit-background-clip: text;
