@@ -42,7 +42,13 @@ const HangMan = () => {
   return (
     <Fragment>
       {!isPlaying && !isEndgame && <NewGame onClose={closeHandler} />}
-      {isPlaying && !isEndgame && <Game attemptsLeft={attemptsLeft} />}
+      {isPlaying && (
+        <Game
+          attemptsLeft={attemptsLeft}
+          isEndgame={isEndgame}
+          onClose={closeHandler}
+        />
+      )}
       {isEndgame && (
         <Endgame
           isVictory={isVictory}

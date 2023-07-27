@@ -17,6 +17,18 @@
     }
   }
 
+  .leave-btn {
+    padding: 2vw 4vw;
+    border: none;
+    border-radius: 1rem;
+    font-size: font-size("small");
+    color: var(--color-five);
+    background-color: red;
+    letter-spacing: 0.1rem;
+    display: block;
+    margin: 0 auto;
+  }
+
   @include media-small {
     padding-top: 20vh;
   }

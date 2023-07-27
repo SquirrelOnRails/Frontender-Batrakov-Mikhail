@@ -7,7 +7,7 @@ import styles from "./NewGameForm.module.scss";
 const NewGameForm = (props) => {
   const dispatch = useDispatch();
   const [length, setLength] = useState(6);
-  const [attempts, setAttempts] = useState(6);
+  const [attempts, setAttempts] = useState(8);
 
   const setGamemodeHandler = (gamemode) => {
     switch (gamemode) {
@@ -85,6 +85,9 @@ const NewGameForm = (props) => {
         </div>
         <div className={styles.controlls}>
           <button type="submit">Start</button>
+          <button type="button" onClick={props.onClose}>
+            Leave game
+          </button>
         </div>
       </form>
     </section>

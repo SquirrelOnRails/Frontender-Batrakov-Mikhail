@@ -5,6 +5,7 @@ import LetterInput from "./LetterInput";
 import { hangmanActions } from "../../store/hangman-slice";
 
 import styles from "./Game.module.scss";
+import { Fragment } from "react";
 
 const Game = (props) => {
   const dispatch = useDispatch();
@@ -16,14 +17,23 @@ const Game = (props) => {
 
   return (
     <section className={styles.game}>
-      <p className={styles.status}>
-        You've got <span>{props.attemptsLeft}</span> attempts left
-      </p>
+      {!props.isEndgame && (
+        <p className={styles.status}>
+          You've got <span>{props.attemptsLeft}</span> attempts left
+        </p>
+      )}
       <WordDisplay
         word={currentGame.hiddenWord}
         letters={currentGame.usedLetters}
       />
-      <LetterInput onSubmit={onNewLetterSubmit} />
+      {!props.isEndgame && (
+        <Fragment>
+          <LetterInput onSubmit={onNewLetterSubmit} />
+          <button className={styles["leave-btn"]} onClick={props.onClose}>
+            Leave Game
+          </button>
+        </Fragment>
+      )}
     </section>
   );
 };
