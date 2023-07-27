@@ -53,6 +53,42 @@
     a.active::before {
       transform: scaleY(1);
     }
+
+    .dark-mode-btn {
+      height: 2.5rem;
+      width: 5rem;
+      place-self: center;
+      border: 0.2rem solid var(--color-one);
+      border-radius: 1.25rem;
+      background-color: var(--color-two);
+      position: relative;
+    }
+    .dark-mode-btn::before,
+    .dark-mode-btn::after {
+      content: "";
+      position: absolute;
+      top: 0.2rem;
+      height: 1.7rem;
+      width: 1.7rem;
+      background-color: var(--color-four);
+      border-radius: 50%;
+    }
+    .dark-mode-btn::before {
+      left: 0.2rem;
+      transition: all 0.5s ease-in-out;
+    }
+    .dark-mode-btn::after {
+      right: 0.2rem;
+      transition: all 0.5s ease-in-out;
+    }
+    .dark-mode-btn.dark-mode-active::before {
+      left: calc(50% - calc(0.5 * 1.7rem));
+      transition: all 0.5s ease-in-out;
+    }
+    .dark-mode-btn.dark-mode-active::after {
+      right: calc(50% - calc(0.5 * 1.7rem));
+      transition: all 0.5s ease-in-out;
+    }
   }
 
   &__user-info {

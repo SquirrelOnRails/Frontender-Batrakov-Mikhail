@@ -8,6 +8,7 @@ const mainInitialState = {
     isShown: false,
   },
   isHeaderActive: false,
+  isDarkMode: false,
 };
 
 const mainSlice = createSlice({
@@ -30,6 +31,13 @@ const mainSlice = createSlice({
         state.isHeaderActive = action.payload;
       } else {
         state.isHeaderActive = !state.isHeaderActive;
+      }
+    },
+    toggleDarkMode: (state, action) => {
+      const newValue = !!action.payload;
+      if (newValue !== state.isDarkMode) {
+        state.isDarkMode = newValue;
+        localStorage.setItem("isDarkMode", newValue);
       }
     },
   },
