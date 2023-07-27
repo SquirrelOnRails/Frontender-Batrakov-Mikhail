@@ -60,12 +60,6 @@ $screen-sizes: (
   @return map-get($screen-sizes, $screen-size-limit);
 }
 
-// CUSTOM TEXT SELECTION ..........
-::selection {
-  background-color: var(--color-one-a);
-  opacity: 0.5;
-}
-
 // PLACEHOLDER STYLES ..........
 // background properties
 %bg {
