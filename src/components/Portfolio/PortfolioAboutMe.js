@@ -16,9 +16,10 @@ const PortfolioAboutMe = () => {
             <label>Birthday</label>
             <p>Oct 02, 1997</p>
           </li>
-          <li>
+          <li className={styles.email}>
             <label>Email</label>
-            <p>squirrelprogrammer@gmail.com</p>
+            <p>squirrelprogrammer</p>
+            <p>@gmail.com</p>
           </li>
           <li>
             <label>Location</label>
