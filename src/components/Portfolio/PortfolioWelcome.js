@@ -4,6 +4,7 @@ import styles from "./PortfolioWelcome.module.scss";
 const PortfolioWelcome = () => {
   return (
     <section className={styles.welcome}>
+      <div className={styles.backdrop} />
       <h1 className={styles.title}>Batrakov Mikhail</h1>
       <p className={styles.para}>Web Developer</p>
       <div className={styles.social}>

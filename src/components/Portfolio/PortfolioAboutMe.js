@@ -6,6 +6,7 @@ const PortfolioAboutMe = () => {
     <Fragment>
       <section className={styles["about-me_image"]} />
       <section className={styles["about-me_content"]}>
+        <div className={styles.backdrop} />
         <ul>
           <li>
             <label>Name</label>
