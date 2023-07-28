@@ -50,33 +50,51 @@
 
   .social {
     padding: 2vh 2vw;
-    place-self: flex-end;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    place-self: flex-end;
 
-    a:link,
-    a:visited {
-      display: inline-block;
+    .coin-wrapper {
+      --coin-size: 6rem;
 
-      i {
+      min-width: var(--coin-size);
+      height: var(--coin-size);
+      margin-left: calc(0.5 * var(--coin-size));
+      cursor: pointer;
+
+      .coin {
+        width: inherit;
         height: inherit;
-        display: block;
-        font-size: calc(6rem + 1vw);
-        border-radius: 50%;
-        overflow: hidden;
+        display: inline-block;
+
+        i {
+          font-size: var(--coin-size);
+          transition: all 0.5s ease-in-out;
+        }
       }
     }
-    a:hover,
-    a:active {
-      i {
-        color: var(--color-one);
+
+    .coin-wrapper:hover {
+      .coin {
+        animation-name: kf__coin-flip;
+        animation-duration: 0.5s;
+
+        i {
+          color: var(--color-four);
+        }
       }
     }
   }
 
   @include media-tablet {
     height: 100vh;
+
+    .social {
+      flex-wrap: wrap;
+
+      .coin-wrapper {
+        --coin-size: 5rem;
+      }
+    }
 
     .title {
       font-size: font-size("xlarge");
@@ -85,6 +103,14 @@
 
   @include media-medium {
     height: 55vh;
+
+    .social {
+      place-self: center;
+
+      .coin-wrapper {
+        --coin-size: 4rem;
+      }
+    }
 
     h1,
     p {
@@ -104,5 +130,23 @@
         }
       }
     }
+  }
+}
+
+@keyframes kf__coin-flip {
+  0% {
+    transform: rotateX(0turn);
+  }
+  25% {
+    transform: translateY(calc(-0.25 * var(--coin-size))) rotateX(0.25turn);
+  }
+  50% {
+    transform: translateY(calc(-0.5 * var(--coin-size))) rotateX(0.5turn);
+  }
+  75% {
+    transform: translateY(calc(-0.25 * var(--coin-size))) rotateX(0.75turn);
+  }
+  100% {
+    transform: rotateX(1turn);
   }
 }
