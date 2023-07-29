@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Fragment } from "react";
 
 import WordDisplay from "./WordDisplay";
 import LetterInput from "./LetterInput";
+import Tries from "./Tries";
 import { hangmanActions } from "../../store/hangman-slice";
 
 import styles from "./Game.module.scss";
-import { Fragment } from "react";
 
 const Game = (props) => {
   const dispatch = useDispatch();
@@ -31,25 +32,11 @@ const Game = (props) => {
       />
       {!props.isEndgame && (
         <Fragment>
-          <div className={styles.tries}>
-            <label>Your Tries:</label>
-            {distinctUsedLetters.map((letter, idx) => (
-              <div
-                key={idx}
-                className={`${styles.letter}
-                ${
-                  currentGame.hiddenWord.indexOf(letter) < 0
-                    ? styles.failed
-                    : styles.succeeded
-                }`}
-              >
-                {letter}
-              </div>
-            ))}
-          </div>
-
+          <Tries
+            usedLetters={distinctUsedLetters}
+            hiddenWord={currentGame.hiddenWord}
+          />
           <LetterInput onSubmit={onNewLetterSubmit} />
-
           <button className={styles["leave-btn"]} onClick={props.onClose}>
             Leave Game
           </button>
