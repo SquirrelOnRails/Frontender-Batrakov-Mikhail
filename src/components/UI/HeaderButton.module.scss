@@ -6,7 +6,7 @@
 
   // do not change
   --margin: calc(0.5 * var(--size));
-  --line: calc((var(--size) / 16));
+  --line: calc(var(--size) / 16);
   --padding: calc(0.25 * var(--margin) + var(--line));
 
   position: fixed;
