@@ -9,17 +9,15 @@ const PortfolioWelcome = () => {
       <p className={styles.para}>Web Developer</p>
       <div className={styles.social}>
         <div className={styles["coin-wrapper"]}>
-          <a className={styles["coin"]} href="#">
-            <i className="fab fa-telegram"></i>
+          <a
+            className={styles["coin"]}
+            href="mailto:squirelprogrammer@gmail.com"
+          >
+            <i className="fas fa-envelope"></i>
           </a>
         </div>
         <div className={styles["coin-wrapper"]}>
-          <a className={styles["coin"]} href="#">
-            <i className="fab fa-telegram"></i>
-          </a>
-        </div>
-        <div className={styles["coin-wrapper"]}>
-          <a className={styles["coin"]} href="#">
+          <a className={styles["coin"]} href="https://t.me/remmremmer">
             <i className="fab fa-telegram"></i>
           </a>
         </div>

@@ -22,9 +22,9 @@ const PortfolioMyExperience = () => {
             <p>South Urals State University</p>
             <p>2015 - 2019</p>
             <p>
-              Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem
-              ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum
-              dolor sit amet.
+              Started my career studying Information Technologies at South Urals
+              State Univercity, got general knowledge of ITs and successfully
+              graduated.
             </p>
           </div>
         </div>
@@ -34,9 +34,9 @@ const PortfolioMyExperience = () => {
             <p>LLC "KOMTEK"</p>
             <p>Aug 2018 - Jan 2019</p>
             <p>
-              Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem
-              ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum
-              dolor sit amet.
+              While still studying, applied for Delphi Developer position, got
+              my first real skills in databases, writting production code and
+              version controll software.
             </p>
           </div>
           <div className={styles.icon}>
@@ -52,13 +52,12 @@ const PortfolioMyExperience = () => {
             <div className={styles.circle}></div>
           </div>
           <div className={styles.description}>
-            <h3>Software Engineer</h3>
+            <h3>C# Web Developer</h3>
             <p>LLC "KOMTEK"</p>
             <p>Feb 2019 - Current Day</p>
             <p>
-              Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem
-              ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum
-              dolor sit amet.
+              I got interested in web technologies, and moved to a C# web
+              developer position in the same company, where i started my career.
             </p>
           </div>
         </div>
