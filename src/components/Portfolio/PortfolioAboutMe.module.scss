@@ -52,6 +52,10 @@
     font-size: font-size("small");
     font-family: "Roboto", cursive;
     word-wrap: break-word;
+
+    a {
+      color: black;
+    }
   }
   .email {
     p {
@@ -63,6 +67,9 @@
   }
 
   @include media-tablet {
+    height: auto;
+    min-height: 55vh;
+
     label {
       width: 15vw;
     }
@@ -98,13 +105,17 @@
       font-size: font-size("medium");
       color: var(--color-two);
       text-shadow: 0.1rem 0.1rem 0.2rem var(--color-five);
+
+      a {
+        color: var(--color-two);
+      }
     }
   }
 
   @include media-small {
     .email {
       p {
-        display: block;
+        font-size: calc(0.5rem + 1.5vw);
       }
     }
   }
