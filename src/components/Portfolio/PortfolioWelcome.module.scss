@@ -98,11 +98,14 @@
 
     .title {
       font-size: font-size("xlarge");
+      line-height: font-size("xlarge");
+      margin-top: 30vh;
     }
   }
 
   @include media-medium {
-    height: 55vh;
+    height: auto;
+    min-height: 55vh;
 
     .social {
       place-self: center;
@@ -120,8 +123,17 @@
   }
 
   @include media-small {
+    .title {
+      font-size: 3rem;
+      font-weight: font-weight("bold");
+    }
+
     .social {
       padding: 1vw;
+
+      .coin-wrapper {
+        --coin-size: 2.5rem;
+      }
 
       a:link,
       a:visited {

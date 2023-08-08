@@ -9,6 +9,11 @@
   @extend %bg;
   background-image: url("../../../public/img/portfolio/bg-01.png");
 
+  @include media-tablet {
+    height: auto;
+    min-height: 55vh;
+  }
+
   @include media-medium {
     display: none;
   }
@@ -56,14 +61,6 @@
     a {
       color: black;
     }
-  }
-  .email {
-    p {
-      display: inline;
-    }
-  }
-
-  .para {
   }
 
   @include media-tablet {
@@ -113,9 +110,11 @@
   }
 
   @include media-small {
-    .email {
-      p {
-        font-size: calc(0.5rem + 1.5vw);
+    p {
+      overflow-wrap: anywhere;
+
+      a {
+        font-size: font-size("medium");
       }
     }
   }
