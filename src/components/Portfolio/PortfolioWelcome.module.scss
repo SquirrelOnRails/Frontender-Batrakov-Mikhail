@@ -6,7 +6,7 @@
   background-image: url("../../../public/img/portfolio/bg-main.png");
   @extend %bg;
   @extend %sec-padding;
-  height: calc(100vh - 3rem - 1vw);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -67,8 +67,8 @@
         display: inline-block;
 
         i {
-          font-size: var(--coin-size);
           transition: all 0.5s ease-in-out;
+          font-size: var(--coin-size);
         }
       }
     }

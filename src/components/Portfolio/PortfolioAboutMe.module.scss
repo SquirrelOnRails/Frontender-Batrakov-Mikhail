@@ -5,7 +5,7 @@
   position: relative;
   z-index: 1;
   grid-column: container-start / col-end 2;
-  height: 55vh;
+  height: auto;
   @extend %bg;
   background-image: url("../../../public/img/portfolio/bg-01.png");
 
@@ -23,8 +23,9 @@
   position: relative;
   z-index: 1;
   grid-column: col-start 3 / container-end;
-  height: 55vh;
-  background-color: var(--color-five-a);
+  height: auto;
+  background: url("../../../public/img/portfolio/about-me-bg.png"),
+    linear-gradient(var(--color-five), var(--color-four));
   padding: 4vw;
   display: flex;
   flex-direction: column;

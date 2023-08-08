@@ -3,13 +3,17 @@
 
 .header {
   grid-column: container-start / container-end;
-  background-color: var(--color-four);
   width: 100%;
   padding: 0 2vw;
-  height: calc(3rem + 1vw);
+  height: calc(5rem + 1vw);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  backdrop-filter: contrast(0.6);
 
   &__nav {
     display: flex;
@@ -95,6 +99,7 @@
     display: flex;
     height: 100%;
     align-items: center;
+    color: var(--color-five);
 
     a:link,
     a:visited {
