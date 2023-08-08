@@ -194,14 +194,15 @@
 
       .header__user-info {
         position: absolute;
-        right: 5vw;
-        top: 5vw;
+        width: 100vw;
+        left: calc(50% - 50vw);
+        bottom: 5vw;
         height: min-content;
         padding: 0 3vw;
         order: 1;
         flex-direction: column;
-        align-self: flex-start;
-        justify-self: end;
+        flex-wrap: wrap;
+        align-content: center;
       }
     }
   }
@@ -232,7 +233,6 @@
   @include media-small {
     &.active {
       .header__user-info {
-        place-items: flex-end;
         span {
           font-size: 2.5rem;
           letter-spacing: 0;
