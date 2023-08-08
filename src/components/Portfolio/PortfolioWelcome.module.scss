@@ -6,7 +6,7 @@
   background-image: url("../../../public/img/portfolio/bg-main.png");
   @extend %bg;
   @extend %sec-padding;
-  height: calc(100vh - 3rem - 1vw);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -67,8 +67,8 @@
         display: inline-block;
 
         i {
-          font-size: var(--coin-size);
           transition: all 0.5s ease-in-out;
+          font-size: var(--coin-size);
         }
       }
     }
@@ -98,11 +98,14 @@
 
     .title {
       font-size: font-size("xlarge");
+      line-height: font-size("xlarge");
+      margin-top: 30vh;
     }
   }
 
   @include media-medium {
-    height: 55vh;
+    height: auto;
+    min-height: 55vh;
 
     .social {
       place-self: center;
@@ -120,8 +123,17 @@
   }
 
   @include media-small {
+    .title {
+      font-size: 3rem;
+      font-weight: font-weight("bold");
+    }
+
     .social {
       padding: 1vw;
+
+      .coin-wrapper {
+        --coin-size: 2.5rem;
+      }
 
       a:link,
       a:visited {
