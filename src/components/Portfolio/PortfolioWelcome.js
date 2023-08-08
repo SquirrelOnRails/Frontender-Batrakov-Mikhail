@@ -11,6 +11,22 @@ const PortfolioWelcome = () => {
         <div className={styles["coin-wrapper"]}>
           <a
             className={styles["coin"]}
+            href="https://github.com/SquirrelOnRails"
+          >
+            <i className="fab fa-github"></i>
+          </a>
+        </div>
+        <div className={styles["coin-wrapper"]}>
+          <a
+            className={styles["coin"]}
+            href="https://www.linkedin.com/in/mikhail-batrakov-2718b0145/"
+          >
+            <i className="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+        <div className={styles["coin-wrapper"]}>
+          <a
+            className={styles["coin"]}
             href="mailto:squirelprogrammer@gmail.com"
           >
             <i className="fas fa-envelope"></i>
