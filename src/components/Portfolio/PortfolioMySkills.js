@@ -13,33 +13,26 @@ const PortfolioMySkills = () => {
                 Version Controll Systems (GIT, Tortoise-Subversion, Gitlab,
                 Github, BitBucket)
               </p>
-              <div
+              {/* <div
                 className={`${styles["level-badge"]} ${styles["level-9"]}`}
-              ></div>
+              ></div> */}
+              <i className="fas fa-code-merge"></i>
             </li>
             <li className={styles.element}>
               <p>Docker (Dockerfile, Docker Compose)</p>
-              <div
-                className={`${styles["level-badge"]} ${styles["level-6"]}`}
-              ></div>
+              <i className="fa-brands fa-docker"></i>
             </li>
             <li className={styles.element}>
               <p>Bugtracking (YouTrack, Jira, Custoom)</p>
-              <div
-                className={`${styles["level-badge"]} ${styles["level-9"]}`}
-              ></div>
+              <i className="fas fa-list-check"></i>
             </li>
             <li className={styles.element}>
               <p>Teamwork (Agile, Group Calls, Planning)</p>
-              <div
-                className={`${styles["level-badge"]} ${styles["level-8"]}`}
-              ></div>
+              <i className="fas fa-people-group"></i>
             </li>
             <li className={styles.element}>
-              <p>CI/CD (Teamcity, Vercel)</p>
-              <div
-                className={`${styles["level-badge"]} ${styles["level-8"]}`}
-              ></div>
+              <p>CI/CD (Teamcity, Octopus, Vercel)</p>
+              <i className="fas fa-truck"></i>
             </li>
           </ul>
         </div>
@@ -48,24 +41,18 @@ const PortfolioMySkills = () => {
           <ul className={styles.list}>
             <li className={styles.element}>
               <p>JavaScript (DOM, XHR, Events, async/await, Promice, NodeJS)</p>
-              <div
-                className={`${styles["level-badge"]} ${styles["level-7"]}`}
-              ></div>
+              <i className="fa-brands fa-square-js"></i>
             </li>
             <li className={styles.element}>
               <p>CSS (sass/scss, adaptive design)</p>
-              <div
-                className={`${styles["level-badge"]} ${styles["level-7"]}`}
-              ></div>
+              <i className="fa-brands fa-css3-alt"></i>
             </li>
             <li className={styles.element}>
               <p>
                 ReactJS (react-router v5/v6, Hooks, Redux, Context, OAuth,
                 modules, functional)
               </p>
-              <div
-                className={`${styles["level-badge"]} ${styles["level-7"]}`}
-              ></div>
+              <i className="fa-brands fa-react"></i>
             </li>
           </ul>
         </div>
@@ -74,21 +61,15 @@ const PortfolioMySkills = () => {
           <ul className={styles.list}>
             <li className={styles.element}>
               <p>ASP.NET C# (OOP, ORM, DI, REST-API, MVC)</p>
-              <div
-                className={`${styles["level-badge"]} ${styles["level-9"]}`}
-              ></div>
+              <i className="fas fa-server"></i>
             </li>
             <li className={styles.element}>
-              <p>Relational Databases (Oracle, PostgreSQL, MySQL, Liquibase)</p>
-              <div
-                className={`${styles["level-badge"]} ${styles["level-9"]}`}
-              ></div>
+              <p>Relational Databases (Oracle, PostgreSQL, MySQL)</p>
+              <i className="fas fa-database"></i>
             </li>
             <li className={styles.element}>
               <p>External API Integration (JWT, REST, SOAP)</p>
-              <div
-                className={`${styles["level-badge"]} ${styles["level-9"]}`}
-              ></div>
+              <i className="fas fa-link"></i>
             </li>
           </ul>
         </div>
