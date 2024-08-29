@@ -64,10 +64,15 @@ section.my-skills {
           display: flex;
           margin-bottom: var(--spacing);
           justify-content: space-between;
+          transition: all 0.25s ease-in-out;
           align-items: center;
         }
         .element:last-child {
           margin-bottom: 0;
+        }
+        .element:hover {
+          color: var(--color-two);
+          transform: scale(1.03);
         }
       }
     }
